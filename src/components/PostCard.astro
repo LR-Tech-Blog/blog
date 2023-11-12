@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content"
+import type { PostData } from "../content/data"
+
+interface Props {
+    post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const data: PostData = post.data
+const formatedDate = data.date.toLocaleDateString()
+---
+
+<li>
+    <a href={"post/" + post.slug}>
+        <div class="flex flex-row h-32 gap-3 rounded-lg p-3
+        transition ease-in hover:bg-overlay1">
+            <img src={data.image.src} class="rounded-md"/>
+            <div class="flex flex-col">
+                <span>
+                    <h1 class="text-lg font-bold">{data.title}</h1>
+                    <h2 class="text-xs">{data.author} ● {formatedDate}</h2>
+                </span>
+                <p class="text-sm text-ellipsis overflow-hidden">
+                    {post.body}
+                </p>
+            </div>
+        </div>
+    </a>
+</li>

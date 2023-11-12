@@ -1,0 +1,18 @@
+---
+import PostCard from "./PostCard.astro";
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+    posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+---
+
+<ul role="list" class="divide-y-2 divide-mantle">
+    {
+        posts.map(p => (
+            <PostCard post={p} />
+        ))
+    }
+</ul>

@@ -1,0 +1,11 @@
+---
+import PostsList from "../components/PostsList.astro";
+import { getCollection, getEntry } from "astro:content"
+import LayoutPage from "../layouts/LayoutPage.astro";
+
+const posts = await getCollection("posts");
+---
+
+<LayoutPage title={null}>
+    <PostsList posts={posts} />
+</LayoutPage>

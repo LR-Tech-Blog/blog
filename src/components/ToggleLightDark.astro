@@ -1,0 +1,41 @@
+---
+import { Icon } from 'astro-icon'
+---
+
+<button id="toggle-theme">
+    <span id="toggle-icon-sun" class="visible">
+        <Icon name="sun" width="30" height="30" />
+    </span>
+    <span id="toggle-icon-moon" class="hidden">
+        <Icon name="moon-stars" width="30" height="30" />
+    </span>
+</button>
+
+<script>
+    import { toggleDarkMode } from "../scripts/theme";
+
+    const button = document.getElementById("toggle-theme")
+    const iconMoon = document.getElementById("toggle-icon-moon")
+    const iconSun = document.getElementById("toggle-icon-sun")
+
+    function buttonClickHandler() {
+        const newTheme = toggleDarkMode()
+        const isDarkMode = newTheme === "dark"
+        if(isDarkMode) {
+            iconMoon?.classList.add("visible")
+            iconMoon?.classList.remove("hidden")
+
+            iconSun?.classList.remove("visible")
+            iconSun?.classList.add("hidden")
+        }
+        else {
+            iconSun?.classList.add("visible")
+            iconSun?.classList.remove("hidden")
+
+            iconMoon?.classList.remove("visible")
+            iconMoon?.classList.add("hidden")
+        }
+    }
+
+    button?.addEventListener("click", buttonClickHandler)
+</script>
