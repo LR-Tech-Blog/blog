@@ -1,37 +1,43 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import NavBar from "../components/NavBar.astro";
-import "@fontsource/poppins"
+import "@fontsource/poppins";
+import Footer from "../components/Footer.astro";
 
 interface Props {
-    title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <html lang="en-us">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title}</title>
-    </head>
-    <body class="m-7 bg-base dark:bg-dark_base text-text dark:text-dark_text font-text">
-        <TopBar/>
-        <NavBar/>
-        <slot/>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-base dark:bg-base text-text dark:text-dark_text font-text">
+    <div class="w-100 flex flex-col h-screen justify-between">
+      <div class="p-7">
+        <TopBar />
+        <NavBar />
+        <slot />
+      </div>
+      <Footer />
+    </div>
+  </body>
 </html>
 
 <script>
-    import { getCurrentThemeMode } from "../scripts/theme";
+  import { getCurrentThemeMode } from "../scripts/theme";
 
-    const currentTheme = getCurrentThemeMode();
-    if (currentTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
+  const currentTheme = getCurrentThemeMode();
+  if (currentTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 </script>

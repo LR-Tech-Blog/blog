@@ -1,5 +1,6 @@
 ---
 import LayoutBase from "./LayoutBase.astro";
+import Prose from "../components/Prose.astro"
 import type { PostImage } from "../content/data"
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import PostSideBarRight from "../components/PostSideBarRight.astro";
@@ -28,7 +29,9 @@ const formatedDate = date.toLocaleDateString()
                     </div>
                 </header>
                 <article>
-                    <slot/>
+                    <Prose>
+                        <slot/>
+                    </Prose>
                 </article>
             </main>
             <PostSideBarRight/>
