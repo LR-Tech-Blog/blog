@@ -1,0 +1,16 @@
+---
+import Icon from 'astro-icon';
+interface Props {
+    name: string
+    iconName: string
+    iconColor: string
+}
+
+const { name, iconName, iconColor } = Astro.props
+---
+
+<div class="tooltip tooltip-bottom hover:tooltip-open
+shadow-lg bg-base dark:bg-dark_base rounded-sm
+p-3" data-tip={name}>
+    <Icon name={iconName} width="30" height="30" color={iconColor}/>
+</div>

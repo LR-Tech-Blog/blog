@@ -1,0 +1,14 @@
+---
+import Tag from './Tag.astro';
+interface Props {
+    tags: string[]
+}
+
+const { tags } = Astro.props
+---
+
+<ul class="space-x-3">
+    {
+        tags.map(t => <Tag tag={t}/>)
+    }
+</ul>

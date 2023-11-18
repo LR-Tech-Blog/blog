@@ -2,11 +2,12 @@
 import { Icon } from 'astro-icon'
 ---
 
-<button id="toggle-theme">
-    <span id="toggle-icon-sun" class="visible">
+<button id="toggle-theme" class="swap swap-rotate">
+    <input type="checkbox"/>
+    <span id="toggle-icon-sun" class="swap-on">
         <Icon name="sun" width="30" height="30" />
     </span>
-    <span id="toggle-icon-moon" class="hidden">
+    <span id="toggle-icon-moon" class="swap-off">
         <Icon name="moon-stars" width="30" height="30" />
     </span>
 </button>
@@ -22,18 +23,18 @@ import { Icon } from 'astro-icon'
         const newTheme = toggleDarkMode()
         const isDarkMode = newTheme === "dark"
         if(isDarkMode) {
-            iconMoon?.classList.add("visible")
-            iconMoon?.classList.remove("hidden")
+            iconMoon?.classList.add("swap-on")
+            iconMoon?.classList.remove("swap-off")
 
-            iconSun?.classList.remove("visible")
-            iconSun?.classList.add("hidden")
+            iconSun?.classList.remove("swap-on")
+            iconSun?.classList.add("swap-off")
         }
         else {
-            iconSun?.classList.add("visible")
-            iconSun?.classList.remove("hidden")
+            iconSun?.classList.add("swap-on")
+            iconSun?.classList.remove("swap-off")
 
-            iconMoon?.classList.remove("visible")
-            iconMoon?.classList.add("hidden")
+            iconMoon?.classList.remove("swap-on")
+            iconMoon?.classList.add("swap-off")
         }
     }
 
