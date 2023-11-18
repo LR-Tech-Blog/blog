@@ -19,7 +19,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-base dark:bg-base text-text dark:text-dark_text font-text">
+  <body>
     <div class="w-100 flex flex-col h-screen justify-between">
       <div class="p-7">
         <TopBar />
@@ -41,3 +41,33 @@ const { title } = Astro.props;
     document.documentElement.classList.remove("dark");
   }
 </script>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer components {
+    h1 {
+      @apply font-bold text-3xl
+    }
+    h2 {
+      @apply font-bold text-xl
+    }
+    h3 {
+      @apply text-sm
+    }
+  }
+
+  @layer containers {
+    body {
+      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text
+    }
+    footer {
+      @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text font-text
+    }
+    .post-prose {
+      @apply prose-headings:text-text prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+    }
+  }
+</style>

@@ -2,13 +2,23 @@
 import IconButton from "./IconButton.astro";
 ---
 
-<footer class="bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text font-text">
+<footer>
     <div class="flex flex-row h-14 w-100 gap-6 items-center p-5 px-10">
-        <span>
+        <button id="creator-github">
             <IconButton name="github"width="30" height="30"/>
-        </span>
-        <span>
+        </button>
+        <button id="creator-linkedin">
             <IconButton name="linkedin" width="30" height="30"/>
-        </span>
+        </button>
     </div>
 </footer>
+
+<script>
+    import { gotoCreatorGithub, gotoCreatorLinkedin } from "../scripts/goto"
+
+    const githubButton = document.getElementById("creator-github")
+    const linkedinButton = document.getElementById("creator-linkedin")
+
+    githubButton?.addEventListener("click", gotoCreatorGithub)
+    linkedinButton?.addEventListener("click", gotoCreatorLinkedin)
+</script>
