@@ -1,8 +1,8 @@
 ---
 import TopBar from "../components/TopBar.astro";
 import NavBar from "../components/NavBar.astro";
-import "@fontsource/poppins";
 import Footer from "../components/Footer.astro";
+import "@fontsource/poppins";
 
 interface Props {
   title: string;
@@ -20,14 +20,14 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="w-100 flex flex-col h-screen justify-between">
-      <div class="p-7">
-        <TopBar />
-        <NavBar />
+    <div class="p-7">
+      <TopBar />
+      <NavBar />
+      <main>
         <slot />
-      </div>
-      <Footer />
+      </main>
     </div>
+    <Footer />
   </body>
 </html>
 
@@ -61,13 +61,10 @@ const { title } = Astro.props;
 
   @layer containers {
     body {
-      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text
+      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text flex flex-col h-screen justify-between
     }
     footer {
-      @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text font-text
-    }
-    .post-prose {
-      @apply prose-headings:text-text prose-headings:font-bold prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
+      @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text
     }
   }
 </style>

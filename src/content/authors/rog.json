@@ -1,0 +1,40 @@
+{
+    "name": "Luan Roger",
+    "age": 20,
+    "email": "luan.roger.2003@gmail.com",
+    "linkedin": "https://linkedin.com/in/luan-roger",
+    "github": "https://github.com/LuanRoger",
+    "profileImageUrl": null,
+    "profileImageAlt": "Luan Roger",
+    "profileImageType": "Gravatar",
+    "stack": [{
+        "name": "Flutter",
+        "iconName": "flutter",
+        "iconColor": "#00B4AB"
+    },
+    {
+        "name": ".NET",
+        "iconName": "dotnet",
+        "iconColor": "#5C2D91"
+    },
+    {
+        "name": "Astro",
+        "iconName": "astro",
+        "iconColor": "#FF5A03"
+    },
+    {
+        "name": "PostgreSQL",
+        "iconName": "postgresql",
+        "iconColor": "#31648C"
+    },
+    {
+        "name": "Docker",
+        "iconName": "docker",
+        "iconColor": "#0997E5"
+    },
+    {
+        "name": "Firebase",
+        "iconName": "firebase",
+        "iconColor": "#FFA611"
+    }]
+}

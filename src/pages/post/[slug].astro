@@ -1,7 +1,7 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro";
-import { type CollectionEntry, getCollection } from "astro:content"
-import type { PostData } from "../../content/data";
+import { type CollectionEntry, getCollection, getEntry } from "astro:content"
+import type { AuthorProfile, PostData } from "../../content/data";
 
 export async function getStaticPaths() {
     const postCollection = await getCollection("posts");
@@ -21,10 +21,11 @@ interface Props {
 
 const { post } = Astro.props
 const data: PostData = post.data
+const authorEntry = await getEntry("authors", data.author.id)
+const author: AuthorProfile = authorEntry.data
 const { Content } = await post.render()
 ---
 
-<PostLayout title={data.title} author={data.author} 
-date={data.date} image={data.image}>
+<PostLayout post={data} author={author}>
     <Content/>
 </PostLayout>

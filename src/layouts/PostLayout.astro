@@ -1,18 +1,18 @@
 ---
 import LayoutBase from "./LayoutBase.astro";
 import Prose from "../components/Prose.astro"
-import type { PostImage } from "../content/data"
+import type { AuthorProfile, PostData, PostImage } from "../content/data"
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import PostSideBarRight from "../components/PostSideBarRight.astro";
+import TagsViewer from "../components/TagsViewer.astro";
 
 interface Props {
-    title: string,
-    author: string
-    date: Date
-    image: PostImage
+    post: PostData
+    author: AuthorProfile
 }
 
-const { title, author, date, image } = Astro.props
+const { post, author } = Astro.props
+const { title, date, tags, image } = post
 const formatedDate = date.toLocaleDateString()
 ---
 
@@ -25,8 +25,9 @@ const formatedDate = date.toLocaleDateString()
                         h-96 w-screen object-cover"/>
                     <div class="flex flex-col">
                         <h1>{title}</h1>
-                        <h3>by {author} ● {formatedDate}</h3>
+                        <h3>by {author.name} ● {formatedDate}</h3>
                     </div>
+                    <TagsViewer tags={tags}/>
                 </header>
                 <article>
                     <Prose>
