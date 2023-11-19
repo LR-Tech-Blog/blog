@@ -36,12 +36,14 @@ const { title } = Astro.props;
 <script>
   import { getCurrentThemeMode } from "../scripts/theme";
 
-  const currentTheme = getCurrentThemeMode();
-  if (currentTheme === "dark") {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
+  document.addEventListener("astro:after-swap", () => {
+    const currentTheme = getCurrentThemeMode();
+    if (currentTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })
 </script>
 
 <style is:global>
@@ -66,7 +68,7 @@ const { title } = Astro.props;
 
   @layer containers {
     body {
-      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text flex flex-col h-screen justify-between
+      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text flex flex-col min-h-screen justify-between
     }
     footer {
       @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text

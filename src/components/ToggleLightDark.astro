@@ -15,28 +15,30 @@ import { Icon } from 'astro-icon'
 <script>
     import { toggleDarkMode } from "../scripts/theme";
 
-    const button = document.getElementById("toggle-theme")
-    const iconMoon = document.getElementById("toggle-icon-moon")
-    const iconSun = document.getElementById("toggle-icon-sun")
+    document.addEventListener("astro:page-load", () => {
+        const button = document.getElementById("toggle-theme")
+        const iconMoon = document.getElementById("toggle-icon-moon")
+        const iconSun = document.getElementById("toggle-icon-sun")
 
-    function buttonClickHandler() {
-        const newTheme = toggleDarkMode()
-        const isDarkMode = newTheme === "dark"
-        if(isDarkMode) {
-            iconMoon?.classList.add("swap-on")
-            iconMoon?.classList.remove("swap-off")
+        function buttonClickHandler() {
+            const newTheme = toggleDarkMode()
+            const isDarkMode = newTheme === "dark"
+            if(isDarkMode) {
+                iconMoon?.classList.add("swap-on")
+                iconMoon?.classList.remove("swap-off")
 
-            iconSun?.classList.remove("swap-on")
-            iconSun?.classList.add("swap-off")
+                iconSun?.classList.remove("swap-on")
+                iconSun?.classList.add("swap-off")
+            }
+            else {
+                iconSun?.classList.add("swap-on")
+                iconSun?.classList.remove("swap-off")
+
+                iconMoon?.classList.remove("swap-on")
+                iconMoon?.classList.add("swap-off")
+            }
         }
-        else {
-            iconSun?.classList.add("swap-on")
-            iconSun?.classList.remove("swap-off")
-
-            iconMoon?.classList.remove("swap-on")
-            iconMoon?.classList.add("swap-off")
-        }
-    }
-
-    button?.addEventListener("click", buttonClickHandler)
+        
+        button?.addEventListener("click", buttonClickHandler)
+    })
 </script>

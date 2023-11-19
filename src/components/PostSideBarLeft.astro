@@ -3,7 +3,7 @@ import Icon from "astro-icon";
 import IconButton from "./IconButton.astro";
 ---
 
-<div class="flex flex-col gap-6 items-center">
+<aside class="flex flex-col gap-6 items-center">
     <span class="font-bold text-xs">SHARE</span>
     <span id="copyLink">
         <IconButton name="link" width="30" height="30"/>
@@ -14,21 +14,23 @@ import IconButton from "./IconButton.astro";
     <!-- <button id="shareLinkedin" class="transition hover:scale-110">
         <Icon name="linkedin" width="30" height="30"/>
     </button> -->
-</div>
+</aside>
 
 <script>
     import { shareTwitter, shareLinkedin } from "../scripts/share"
-
-    document.getElementById("copyLink")?.addEventListener("click", () => {
+    
+    document.addEventListener("astro:page-load", () => {
+        document.getElementById("copyLink")?.addEventListener("click", () => {
         const link = encodeURI(window.location.href)
         navigator.clipboard.writeText(link)
-    })
-    document.getElementById("shareTwitter")?.addEventListener("click", () => {
-        const link = encodeURI(window.location.href)
-        shareTwitter(link)
-    })
-    document.getElementById("shareLinkedin")?.addEventListener("click", () => {
-        const link = encodeURI(window.location.href)
-        shareLinkedin(link)
+        })
+        document.getElementById("shareTwitter")?.addEventListener("click", () => {
+            const link = encodeURI(window.location.href)
+            shareTwitter(link)
+        })
+        document.getElementById("shareLinkedin")?.addEventListener("click", () => {
+            const link = encodeURI(window.location.href)
+            shareLinkedin(link)
+        })
     })
 </script>
