@@ -1,10 +1,9 @@
 ---
-import Icon from "astro-icon";
+import Logo from "./Logo.astro";
 import ToggleLightDark from "./ToggleLightDark.astro";
 ---
 
-<header class="flex flex-row-reverse justify-between items-center">
-    <div class="flex flex-row gap-5">
-        <ToggleLightDark/>
-    </div>
+<header class="flex flex-row justify-between items-center mb-3">
+    <Logo/>
+    <ToggleLightDark/>
 </header>
