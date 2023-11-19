@@ -3,6 +3,7 @@ import TopBar from "../components/TopBar.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource/poppins";
+import { ViewTransitions, fade } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -11,13 +12,14 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions/>
   </head>
   <body>
     <div class="p-7">

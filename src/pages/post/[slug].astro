@@ -26,6 +26,6 @@ const author: AuthorProfile = authorEntry.data
 const { Content } = await post.render()
 ---
 
-<PostLayout post={data} author={author}>
+<PostLayout id={post.id} post={data} author={author}>
     <Content/>
 </PostLayout>

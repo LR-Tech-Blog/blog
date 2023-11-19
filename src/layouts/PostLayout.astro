@@ -1,18 +1,21 @@
 ---
 import LayoutBase from "./LayoutBase.astro";
 import Prose from "../components/Prose.astro"
-import type { AuthorProfile, PostData, PostImage } from "../content/data"
+import type { AuthorProfile, PostData } from "../content/data"
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import PostSideBarRight from "../components/PostSideBarRight.astro";
 import TagsViewer from "../components/TagsViewer.astro";
+import Tag from "../components/Tag.astro"
+import PostTypeTag from "../components/PostTypeTag.astro";
 
 interface Props {
+    id: string
     post: PostData
     author: AuthorProfile
 }
 
-const { post, author } = Astro.props
-const { title, date, tags, image } = post
+const { id, post, author } = Astro.props
+const { title, date, tags, postType, image } = post
 const formatedDate = date.toLocaleDateString()
 ---
 
@@ -21,10 +24,16 @@ const formatedDate = date.toLocaleDateString()
             <PostSideBarLeft/>
             <main class="flex flex-col gap-5">
                 <header class="flex flex-col">
-                    <img src={image.src} alt={image.alt} class="rounded-xl mb-5 
-                        h-96 w-screen object-cover"/>
-                    <div class="flex flex-col">
-                        <h1>{title}</h1>
+                    <div class="relative">
+                        <img src={image.src} alt={image.alt} class="rounded-xl mb-5 
+                        h-96 w-screen object-cover shadow-md">
+                            <span class="absolute top-3 right-3" transition:name={id + postType}>
+                                <PostTypeTag text={postType}/>
+                            </span>
+                        </img>
+                    </div>
+                    <div class="flex flex-col mb-3">
+                        <h1 transition:name={id}>{title}</h1>
                         <h3>by {author.name} ● {formatedDate}</h3>
                     </div>
                     <TagsViewer tags={tags}/>
