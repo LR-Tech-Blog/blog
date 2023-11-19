@@ -9,6 +9,7 @@ export interface PostData {
     draft: boolean,
     tags: string[],
     postType: string,
+    description: string,
     image: PostImage
 }
 
