@@ -3,13 +3,23 @@ import IconButton from "./IconButton.astro";
 ---
 
 <footer>
-    <div class="flex flex-row h-14 w-100 gap-6 items-center p-5 px-10">
-        <button id="creator-github">
-            <IconButton name="github"width="30" height="30"/>
-        </button>
-        <button id="creator-linkedin">
-            <IconButton name="linkedin" width="30" height="30"/>
-        </button>
+    <div class="flex flex-row h-14 w-100 justify-between items-center p-5 px-10">
+        <aside class="flex flex-row gap-6">
+            <button id="creator-github">
+                <IconButton name="github"width="30" height="30"/>
+            </button>
+            <button id="creator-linkedin">
+                <IconButton name="linkedin" width="30" height="30"/>
+            </button>
+        </aside>
+        <aside>
+            <small>
+                <span>
+                    Todos os direitos reservados Luan Roger © 
+                    <a href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE" class="undeline-link">MIT License</a> ● Made in Brazil 🇧🇷
+                </span>
+            </small>
+        </aside>
 </footer>
 
 <script>
