@@ -1,17 +1,10 @@
 ---
+import Icon from "astro-icon";
 import IconButton from "./IconButton.astro";
 ---
 
 <footer>
     <div class="flex flex-row h-14 w-100 justify-between items-center p-5 px-10">
-        <aside class="flex flex-row gap-6">
-            <button id="creator-github">
-                <IconButton name="github"width="30" height="30"/>
-            </button>
-            <button id="creator-linkedin">
-                <IconButton name="linkedin" width="30" height="30"/>
-            </button>
-        </aside>
         <aside>
             <small>
                 <span>
@@ -19,6 +12,16 @@ import IconButton from "./IconButton.astro";
                     <a href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE" class="undeline-link">MIT License</a> ● Made in Brazil 🇧🇷
                 </span>
             </small>
+        </aside>
+        <aside class="flex flex-row gap-2 items-center">
+            <a href="https://github.com/LuanRoger/lr-tech-blog" class="tooltip tooltip-top" 
+            data-tip="Fork me">
+                <IconButton name="fork" height="17" width="17"/>
+            </a>
+            <a href="/rss.xml" class="tooltip tooltip-top"
+            data-tip="RSS">
+                <IconButton name="rss" height="17" width="17"/>
+            </a>
         </aside>
 </footer>
 
