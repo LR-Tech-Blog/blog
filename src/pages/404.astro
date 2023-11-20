@@ -1,0 +1,35 @@
+---
+import Icon from "astro-icon";
+import LayoutPage from "../layouts/LayoutPage.astro";
+import { generateRandomNumber } from "../scripts/utils"
+import { getRandomEmoji } from "../scripts/emoji"
+
+const iconIndex = generateRandomNumber(0, 20)
+const emoji = getRandomEmoji()
+console.log(`Icon frequency: ${iconIndex}`);
+console.log(`Emojo: ${emoji}`);
+
+
+---
+
+<LayoutPage title="Você digitou erardo?">
+    <div class="flex flex-col items-center justify-center h-52">
+        {
+            iconIndex > 5 ? <Icon name="file-off" height="40" width="40"/> : 
+            <Icon name="downasaur" height="40" width="40"/>
+        }
+        <h2>
+            Esta pagina não existe.
+        </h2>
+        <p class="text-lg">
+            Talvez você tenha digitado errado.
+        </p>
+        <p class="text-sm">
+            Você vai encontrar o que quer.
+        </p>
+        <p class="text-xs">
+            Não disista.
+        </p>
+        <small>{emoji}</small>
+    </div>
+</LayoutPage>
