@@ -1,0 +1,61 @@
+---
+import Icon from "astro-icon";
+
+interface Props {
+    enable: boolean
+}
+
+const { enable } = Astro.props
+---
+
+{
+    enable && 
+    <button id="back-top" class="hidden" data-enable={enable}>
+        <div id="button-div" class="fixed bottom-12 right-10 shadow-lg rounded-lg p-3 bg-base dark:bg-dark_base
+        transition hover:scale-110 hover:shadow-xl">
+            <Icon name="up" width="30" height="30"/>
+        </div>
+    </button>
+}
+
+<script>
+    
+    document.addEventListener("astro:after-swap", () => {
+        const backTopButton = document.getElementById("back-top")
+        backTopButton?.addEventListener("click", () => {
+            document.documentElement.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        })
+        showWhenScroll()
+    })
+    document.addEventListener("astro:page-load", () => {
+        showWhenScroll()
+    })
+
+    function showWhenScroll() {
+        const scollTrigger = 500
+        const backTopButton = document.getElementById("back-top")
+        const buttonDiv = document.getElementById("button-div")
+
+        window.onscroll = () => {
+            if(window.scrollY >= scollTrigger) {
+                backTopButton?.classList.remove("hidden")
+                buttonDiv?.classList.remove("opacity-0")
+                buttonDiv?.classList.remove("scale-90")
+
+                buttonDiv?.classList.add("opacity-100")
+                buttonDiv?.classList.add("scale-100")
+            }
+            else {
+                backTopButton?.classList.add("hidden")
+                buttonDiv?.classList.add("opacity-0")
+                buttonDiv?.classList.add("scale-90")
+
+                buttonDiv?.classList.remove("opacity-100")
+                buttonDiv?.classList.remove("scale-100")
+            }
+        }
+    }
+</script>
