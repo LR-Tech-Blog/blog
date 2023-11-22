@@ -3,13 +3,15 @@ import TopBar from "../components/TopBar.astro";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource/poppins";
-import { ViewTransitions, fade } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
+import BackToTopButton from "../components/BackToTopButton.astro";
 
 interface Props {
   title: string;
+  bttEnable: boolean
 }
 
-const { title } = Astro.props;
+const { title, bttEnable } = Astro.props;
 ---
 
 <html lang="pt-BR">
@@ -27,6 +29,7 @@ const { title } = Astro.props;
       <NavBar />
       <main>
         <slot />
+        <BackToTopButton enable={bttEnable}/>
       </main>
     </div>
     <Footer />

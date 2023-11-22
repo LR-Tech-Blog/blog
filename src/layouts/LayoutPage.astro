@@ -9,7 +9,7 @@ const { title } = Astro.props
 const defaultTitle = "Luan Roger"
 ---
 
-<LayoutBase title={title ?? defaultTitle}>
+<LayoutBase title={title ?? defaultTitle} bttEnable={false} >
         <div class="mx-10">
             <main>
                 <slot/>
