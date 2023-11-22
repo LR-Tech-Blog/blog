@@ -18,26 +18,25 @@ const { title, date, tags, postType, image } = post
 const formatedDate = date.toLocaleDateString()
 ---
 
-<LayoutBase title={title}>
+<LayoutBase title={title} bttEnable>
         <div class="flex flex-row gap-10 mx-16">
             <PostSideBarLeft/>
             <main class="flex flex-col gap-5">
                 <header class="flex flex-col">
-                    <div class="relative">
-                        <img src={image.src} alt={image.alt} class="rounded-xl mb-5 
-                        h-96 w-screen object-cover shadow-md">
-                            <span class="absolute top-3 right-3" transition:name={id + postType}>
+                    <img src={image.src} alt={image.alt} class="relative rounded-xl mb-5 
+                        h-96 w-screen object-cover shadow-md"/>
+                    <div class="flex flex-col mb-3">
+                        <div class="flex flex-row items-center gap-3">
+                            <h1 transition:name={id}>{title}</h1>
+                            <span transition:name={id + postType}>
                                 <PostTypeTag text={postType}/>
                             </span>
-                        </img>
-                    </div>
-                    <div class="flex flex-col mb-3">
-                        <h1 transition:name={id}>{title}</h1>
-                        <h3>by {author.name} ● {formatedDate}</h3>
+                        </div>
+                        <small>by {author.name} ● {formatedDate}</small>
                     </div>
                     <TagsViewer tags={tags}/>
                 </header>
-                <article>
+                <article class="self-center">
                     <Prose>
                         <slot/>
                     </Prose>
