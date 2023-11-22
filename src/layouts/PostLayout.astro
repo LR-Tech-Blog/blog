@@ -5,7 +5,6 @@ import type { AuthorProfile, PostData } from "../content/data"
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import PostSideBarRight from "../components/PostSideBarRight.astro";
 import TagsViewer from "../components/TagsViewer.astro";
-import Tag from "../components/Tag.astro"
 import PostTypeTag from "../components/PostTypeTag.astro";
 
 interface Props {
@@ -44,6 +43,5 @@ const formatedDate = date.toLocaleDateString()
                     </Prose>
                 </article>
             </main>
-            <PostSideBarRight/>
         </div>
 </LayoutPage>

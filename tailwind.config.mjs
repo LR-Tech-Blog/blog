@@ -18,6 +18,13 @@ export default {
 				dark_surface0: "#313244",
 				dark_base: "#1e1e2e",
 				dark_mantle: "#181825",
+
+				sapphire: "#209fb5",
+				lavender: "#7287fd",
+				maroon: "#e64553",
+				red: "#d20f39",
+				yellow: "#df8e1d",
+				peach: "#fe640b"
 			},
 			fontFamily: {
 				text: ["Poppins"],
