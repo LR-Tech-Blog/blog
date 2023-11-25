@@ -1,46 +1,46 @@
 ---
 import LayoutBase from "./LayoutBase.astro";
-import Prose from "../components/Prose.astro"
-import type { AuthorProfile, PostData } from "../content/data"
+import Prose from "../components/Prose.astro";
+import type { AuthorProfile, PostData } from "../content/data";
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import PostSideBarRight from "../components/PostSideBarRight.astro";
 import TagsViewer from "../components/TagsViewer.astro";
 import PostTypeTag from "../components/PostTypeTag.astro";
 
 interface Props {
-    id: string
-    post: PostData
-    author: AuthorProfile
+  id: string;
+  post: PostData;
+  author: AuthorProfile;
 }
 
-const { id, post, author } = Astro.props
-const { title, date, tags, postType, image } = post
-const formatedDate = date.toLocaleDateString()
+const { id, post, author } = Astro.props;
+const { title, date, tags, postType, image } = post;
+const formatedDate = date.toLocaleDateString();
 ---
 
 <LayoutBase title={title} bttEnable>
-        <div class="flex flex-row gap-10 mx-16">
-            <PostSideBarLeft/>
-            <main class="flex flex-col gap-5">
-                <header class="flex flex-col">
-                    <img src={image.src} alt={image.alt} class="relative rounded-xl mb-5 
-                        h-96 w-screen object-cover shadow-md"/>
-                    <div class="flex flex-col mb-3">
-                        <div class="flex flex-row items-center gap-3">
-                            <h1 transition:name={id}>{title}</h1>
-                            <span transition:name={id + postType}>
-                                <PostTypeTag text={postType}/>
-                            </span>
-                        </div>
-                        <small>by {author.name} ● {formatedDate}</small>
-                    </div>
-                    <TagsViewer tags={tags}/>
-                </header>
-                <article class="self-center">
-                    <Prose>
-                        <slot/>
-                    </Prose>
-                </article>
-            </main>
+  <main class="sm:mx-5 md:mx-14">
+    <div class="flex flex-col gap-5">
+      <PostSideBarLeft/>
+      <header class="flex flex-col">
+        <img src={image.src} alt={image.alt} class="relative rounded-xl mb-5 
+            h-96 w-screen shadow-md object-cover"/>
+        <div class="flex flex-col mb-3">
+            <div class="flex flex-row items-center gap-3">
+                <h1 transition:name={id}>{title}</h1>
+                <span transition:name={id + postType}>
+                    <PostTypeTag text={postType}/>
+                </span>
+            </div>
+            <small>by {author.name} ● {formatedDate}</small>
         </div>
+        <TagsViewer tags={tags}/>
+    </header>
+  </div>
+  <article class="self-center">
+    <Prose>
+        <slot/>
+    </Prose>
+</article>
+  </main>
 </LayoutPage>
