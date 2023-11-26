@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import type { AuthorProfile } from "../content/data";
 import { AuthorProfileImageType } from "../content/data"
 import { getGravatarImageUrl } from "../scripts/utils";
+import { Image } from 'astro:assets';
 
 interface Props {
     adm: AuthorProfile
@@ -13,5 +13,5 @@ const imageSize = 200
 const { adm } = Astro.props
 const imageUrl = adm.profileImageType === AuthorProfileImageType.Gravatar ? getGravatarImageUrl(adm.email, imageSize) : adm.profileImageUrl
 ---
-<img class="rounded-xl object-cover" src={imageUrl} alt={adm.profileImageAlt} 
+<Image class="rounded-xl object-cover" src={imageUrl} alt={adm.profileImageAlt} 
 width={imageSize} height={imageSize}>

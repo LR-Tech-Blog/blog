@@ -22,3 +22,4 @@ pnpm-debug.log*
 
 #VS Code
 .vscode/
+.vercel
