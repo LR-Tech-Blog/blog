@@ -1,12 +1,12 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import { getPosts } from "../scripts/content_fetcher";
 
 export async function GET(context) {
-    const blogPosts = await getCollection("posts")
+    const blogPosts = await getPosts()
 
     return rss({
       title: "LR Tech Blog",
-      description: "⚡ ",
+      description: "⚡",
       site: context.site,
       stylesheet: "/rss/style.xsl",
       items: blogPosts.map(p => ({

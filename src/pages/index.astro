@@ -1,9 +1,9 @@
 ---
 import PostsList from "../components/PostsList.astro";
-import { getCollection } from "astro:content"
 import LayoutPage from "../layouts/LayoutPage.astro";
+import { getPosts } from "../scripts/content_fetcher"
 
-const posts = await getCollection("posts");
+const posts = await getPosts()
 ---
 
 <LayoutPage title={null}>
