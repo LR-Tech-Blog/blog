@@ -14,10 +14,10 @@
       <body class="bg-white">
         <nav class="container-md px-3 py-2 mt-2 mt-md-5 mb-5 markdown-body">
           <p class="bg-yellow-light ml-n1 px-1 py-1 mb-1">
-            <strong>This is a web feed,</strong> also known as an RSS feed. <strong>Subscribe</strong> by copying the URL from the address bar into your newsreader.
+            <strong>Este é um feed web,</strong> também conhecido como feed RSS. <strong>Acompanhe</strong> copiando o URL da barra de endereço para o seu leitor de notícias.
           </p>
           <p class="text-gray">
-            Visit <a href="https://aboutfeeds.com">About Feeds</a> to get started with newsreaders and subscribing. It’s free.
+            Visite <a href="https://aboutfeeds.com">About Feeds</a> para começar a usar leitores de notícias e se inscrever. É grátis.
           </p>
         </nav>
         <div class="container-md px-3 py-3 markdown-body">
@@ -41,7 +41,7 @@
                 <path d="M184 213A140 140 0 0 0 44 73 V 38a175 175 0 0 1 175 175z" fill="#FFF"/>
               </svg>
 
-              Web Feed Preview
+              Web Feed
             </h1>
             <h2><xsl:value-of select="/rss/channel/title"/></h2>
             <p><xsl:value-of select="/rss/channel/description"/></p>
@@ -52,7 +52,7 @@
               Visit Website &#x2192;
             </a>
           </header>
-          <h2>Recent Items</h2>
+          <h2>Posts recentes</h2>
           <xsl:for-each select="/rss/channel/item">
             <div class="pb-5">
               <h3 class="mb-0">
