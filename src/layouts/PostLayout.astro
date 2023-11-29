@@ -1,9 +1,8 @@
 ---
 import LayoutBase from "./LayoutBase.astro";
 import Prose from "../components/Prose.astro";
-import type { AuthorProfile, PostData } from "../content/data";
+import type { AuthorProfile, PostData } from "../scripts/types/post_types";
 import PostSideBarLeft from "../components/PostSideBarLeft.astro";
-import PostSideBarRight from "../components/PostSideBarRight.astro";
 import TagsViewer from "../components/TagsViewer.astro";
 import PostTypeTag from "../components/PostTypeTag.astro";
 
@@ -20,7 +19,7 @@ const formatedDate = date.toLocaleDateString();
 
 <LayoutBase title={title} bttEnable>
   <main class="sm:mx-5 md:mx-14">
-    <div class="flex flex-col gap-5">
+    <div class="flex flex-col gap-5 mb-5">
       <PostSideBarLeft/>
       <header class="flex flex-col">
         <img src={image.src} alt={image.alt} class="relative rounded-xl mb-5 

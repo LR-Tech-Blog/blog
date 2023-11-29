@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry, getEntry } from "astro:content"
-import type { AuthorProfile, PostData } from "../content/data"
+import type { AuthorProfile, PostData } from "../scripts/types/post_types"
 import PostTypeTag from "./PostTypeTag.astro"
 
 interface Props {
@@ -26,7 +26,7 @@ const formatedDate = data.date.toLocaleDateString()
             </span>
             <small>{author.name} ● {formatedDate}</small>
             <div>
-                <p class="text-sm text-ellipsis overflow-hidden">
+                <p class="text-ellipsis overflow-hidden">
                     {data.description}
                 </p>
             </div>

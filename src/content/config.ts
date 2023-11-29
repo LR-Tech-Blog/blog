@@ -46,5 +46,5 @@ const authorDescription = defineCollection({
 export const collections = {
     'posts': blogCollection,
     'authors': authorProfile,
-    'authorDescription': authorDescription
+    'authorsDescription': authorDescription
 }

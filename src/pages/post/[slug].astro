@@ -1,7 +1,7 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro";
 import { type CollectionEntry, getCollection, getEntry } from "astro:content"
-import type { AuthorProfile, PostData } from "../../content/data";
+import type { AuthorProfile, PostData } from "../../scripts/types/post_types";
 
 export async function getStaticPaths() {
     const postCollection = await getCollection("posts");
