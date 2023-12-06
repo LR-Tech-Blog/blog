@@ -28,6 +28,7 @@ export default {
 			},
 			fontFamily: {
 				text: ["Poppins"],
+				code: ["JetBrains Mono", "monospace"]
 			}
 		},
 		screens: {
