@@ -12,8 +12,8 @@ interface Props {
   author: AuthorProfile;
 }
 
-const { id, post, author } = Astro.props;
-const { title, date, tags, postType, image } = post;
+const { post, author } = Astro.props;
+const { id, title, date, tags, postType, image } = post;
 const formatedDate = date.toLocaleDateString();
 ---
 

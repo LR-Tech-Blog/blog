@@ -3,6 +3,7 @@ export interface PostImage {
     alt: string
 }
 export interface PostData {
+    id: string,
     title: string,
     author: any,
     date: Date,
