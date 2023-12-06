@@ -1,0 +1,45 @@
+---
+title: "Components Test"
+author: rog
+date: 2023-12-06
+draft: false
+tags: 
+- "test"
+postType: "Test"
+description: "Esta é a descrição do post"
+image: {
+    "src": "/images/posts/hello_world.jpg",
+    "alt": "Hello World"
+}
+---
+import ImageMdx from "../../components/mdx/ImageMdx.astro"
+import CodeMdx from "../../components/mdx/CodeMdx.astro"
+export const components = { img: ImageMdx, code: CodeMdx }
+
+# Header 1
+Header 1
+
+## Header 2
+Header 2
+
+### Header 3
+Header 3
+
+Citação de váriavel `var x = 10`
+
+```cs
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Hello World!");
+    }
+}
+```
+
+- Checkbox 1
+- Checkbox 2
+- Checkbox 3
+
+### Image
+![](/images/posts/hello_world.jpg)
