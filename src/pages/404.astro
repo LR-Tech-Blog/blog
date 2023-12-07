@@ -3,13 +3,12 @@ import Icon from "astro-icon";
 import LayoutPage from "../layouts/LayoutPage.astro";
 import { generateRandomNumber } from "../scripts/utils"
 import { getRandomEmoji } from "../scripts/emoji"
+export const prerender = false
 
 const iconIndex = generateRandomNumber(0, 20)
 const emoji = getRandomEmoji()
 console.log(`Icon frequency: ${iconIndex}`);
 console.log(`Emojo: ${emoji}`);
-
-
 ---
 
 <LayoutPage title="Você digitou erardo?">
