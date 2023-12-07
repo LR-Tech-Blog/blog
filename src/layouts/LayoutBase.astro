@@ -48,6 +48,14 @@ const { title, bttEnable } = Astro.props;
       document.documentElement.classList.remove("dark");
     }
   })
+  document.addEventListener("astro:page-load", () => {
+    const currentTheme = getCurrentThemeMode();
+    if (currentTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })
 </script>
 
 <style is:global>

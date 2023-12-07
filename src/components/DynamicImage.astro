@@ -1,0 +1,45 @@
+---
+interface Props {
+    src: string
+    srcDark: string
+    alt: string
+}
+
+const { src, srcDark, alt } = Astro.props
+---
+
+<div class="rounded-md">
+    <dyna-image data-src={src} data-dark={srcDark}>
+        <img alt={alt} width="720"/>
+    </dyna-image>
+</div>
+
+<script>
+    import { getCurrentThemeMode } from "../scripts/theme"
+
+    document.addEventListener("astro:page-load", () => {
+        class DynaImage extends HTMLElement {
+            constructor() {
+                super();
+                const currentTheme = getCurrentThemeMode();
+                const srcLight = this.dataset.src;
+                const srcDark = this.dataset.dark;
+                console.log("Dark: " + srcDark);
+
+                const image = this.querySelector("img")
+                if(currentTheme === "dark") {
+                    image?.setAttribute("src", srcDark ?? "")
+                }
+                else {
+                    console.log("Light");
+                    image?.setAttribute("src", srcLight ?? "")
+                }
+            }
+        }
+        const exists = typeof customElements.get("dyna-image") !== "undefined"
+        if(!exists) {
+            customElements.define("dyna-image", DynaImage)
+        }
+    })
+    
+</script>

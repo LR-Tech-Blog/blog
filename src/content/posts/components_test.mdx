@@ -9,13 +9,11 @@ tags:
 postType: "Test"
 description: "Esta é a descrição do post"
 image: {
-    "src": "/images/posts/components_test.png",
+    "src": "/images/posts/components_test/components_test.png",
     "alt": "Components Test"
 }
 ---
-import ImageMdx from "../../components/mdx/ImageMdx.astro"
-import CodeMdx from "../../components/mdx/CodeMdx.astro"
-export const components = { img: ImageMdx, code: CodeMdx }
+import DynamicImage from "../../components/DynamicImage.astro"
 
 # Header 1
 Header 1
@@ -44,3 +42,7 @@ public class Program
 
 ### Image
 ![](/images/posts/hello_world.jpg)
+
+### Vídeo Dinâmico
+Este vídeo muda de acordo com o tema do site
+<DynamicImage src="/images/posts/components_test/components_test_light.gif" srcDark="/images/posts/components_test/components_test_dark.gif"/>
