@@ -1,0 +1,17 @@
+name: Deploy Preview Trigger
+
+on:
+    workflow_dispatch:
+    pull_request:
+    push:
+        branches:
+            - main
+
+jobs:
+    trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Trigger
+              run: 
+                |
+                curl -L -X POST -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.DEPLOY_PREVIEW_PAT }}" https://api.github.com/repos/LR-Tech-Blog/deploy/dispatches -d '{"event_type":"deploy-preview"}'
