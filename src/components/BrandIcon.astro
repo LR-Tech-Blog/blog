@@ -1,0 +1,17 @@
+---
+import Icon from 'astro-icon';
+interface Props {
+    brand: string
+}
+
+const { brand } = Astro.props
+---
+<Icon pack="simple-icons" name={brand} class="fill-text dark:fill-dark_text"/>
+
+<style>
+    [astro-icon] {
+        max-height: 1.5em;
+        display: inline-block;
+        vertical-align: middle;
+    }
+</style>
