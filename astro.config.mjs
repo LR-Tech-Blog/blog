@@ -6,7 +6,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 export default defineConfig({
   integrations: [tailwind(), mdx()],
-  site: "http://localhost:4321",
+  site: "https://lrtechblog.vercel.app",
   output: "hybrid",
   adapter: vercel({
     webAnalytics: {

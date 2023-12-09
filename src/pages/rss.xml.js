@@ -6,9 +6,8 @@ export async function GET(context) {
 
     return rss({
       title: "LR Tech Blog",
-      description: "⚡",
+      description: "Blog de tecnologia com conteúdo técnico sobre programação e software.",
       site: context.site,
-      stylesheet: "/rss/style.xsl",
       items: blogPosts.map(p => ({
         title: p.data.title,
         description: p.data.description,
