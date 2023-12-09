@@ -14,7 +14,7 @@ interface Props {
 
 const { post, author } = Astro.props;
 const { id, title, date, tags, postType, description, image } = post;
-const formatedDate = date.toLocaleDateString();
+const formatedDate = date.toLocaleDateString("pt-br");
 ---
 
 <LayoutBase title={title} bttEnable metaDescription={description}>

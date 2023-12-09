@@ -12,7 +12,7 @@ const data: PostData = post.data
 const authorEntry = await getEntry("authors", data.author.id)
 const author: AuthorProfile = authorEntry.data
 
-const formatedDate = data.date.toLocaleDateString()
+const formatedDate = data.date.toLocaleDateString("pt-br")
 ---
 
 <li class="py-4">
