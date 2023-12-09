@@ -9,10 +9,11 @@ import BackToTopButton from "../components/BackToTopButton.astro";
 
 interface Props {
   title: string;
-  bttEnable: boolean
+  bttEnable: boolean;
+  metaDescription?: string;
 }
 
-const { title, bttEnable } = Astro.props;
+const { title, bttEnable, metaDescription } = Astro.props;
 ---
 
 <html lang="pt-BR">
@@ -28,6 +29,8 @@ const { title, bttEnable } = Astro.props;
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome512.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription ?? 
+    "Blog de tecnologia com conteúdo técnico sobre programação e software."} />
     <title>{title}</title>
     <ViewTransitions/>
   </head>

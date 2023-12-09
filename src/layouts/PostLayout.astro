@@ -13,11 +13,11 @@ interface Props {
 }
 
 const { post, author } = Astro.props;
-const { id, title, date, tags, postType, image } = post;
+const { id, title, date, tags, postType, description, image } = post;
 const formatedDate = date.toLocaleDateString();
 ---
 
-<LayoutBase title={title} bttEnable>
+<LayoutBase title={title} bttEnable metaDescription={description}>
   <main class="sm:mx-5 md:mx-28">
     <div class="flex flex-col gap-5 mb-5">
       <PostSideBarLeft/>
