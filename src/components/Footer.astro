@@ -1,35 +1,43 @@
 ---
 import IconButton from "./IconButton.astro";
+import SponsorButton from "./SponsorButton.astro";
 ---
 
 <footer>
-    <div class="flex flex-row w-100 justify-between items-center p-5 px-10">
-        <aside>
-            <small>
-                <span>
-                    Todos os direitos reservados Luan Roger © 
-                    <a href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE" class="undeline-link">MIT License</a> ● Made in Brazil 🇧🇷
-                </span>
-            </small>
-        </aside>
-        <aside class="flex flex-row gap-2 items-center">
-            <a href="https://github.com/LuanRoger/lr-tech-blog" class="tooltip tooltip-top" 
-            data-tip="Fork me">
-                <IconButton name="fork" height="17" width="17"/>
-            </a>
-            <a href="/rss.xml" class="tooltip tooltip-top"
-            data-tip="RSS">
-                <IconButton name="rss" height="17" width="17"/>
-            </a>
-        </aside>
+  <div class="flex sm:flex-col sm:gap-3 md:max-2xl:flex-row w-100 justify-between items-center p-5 px-10">
+    <aside>
+      <small>
+        <span>
+          Todos os direitos reservados Luan Roger ©
+          <a
+            href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE"
+            class="undeline-link">MIT License</a
+          > ● Made in Brazil 🇧🇷
+        </span>
+      </small>
+    </aside>
+    <aside class="flex flex-row md:max-2xl:gap-2 sm:gap-5 items-center">
+      <a
+        href="https://github.com/LuanRoger/lr-tech-blog"
+        class="tooltip tooltip-top flex items-center"
+        data-tip="Fork me"
+      >
+        <IconButton name="fork" height="17" width="17" />
+      </a>
+      <a href="/rss.xml" class="tooltip tooltip-top flex items-center" data-tip="RSS">
+        <IconButton name="rss" height="17" width="17" />
+      </a>
+      <SponsorButton/>
+    </aside>
+  </div>
+
+  <script>
+    import { gotoCreatorGithub, gotoCreatorLinkedin } from "../scripts/goto";
+
+    const githubButton = document.getElementById("creator-github");
+    const linkedinButton = document.getElementById("creator-linkedin");
+
+    githubButton?.addEventListener("click", gotoCreatorGithub);
+    linkedinButton?.addEventListener("click", gotoCreatorLinkedin);
+  </script>
 </footer>
-
-<script>
-    import { gotoCreatorGithub, gotoCreatorLinkedin } from "../scripts/goto"
-
-    const githubButton = document.getElementById("creator-github")
-    const linkedinButton = document.getElementById("creator-linkedin")
-
-    githubButton?.addEventListener("click", gotoCreatorGithub)
-    linkedinButton?.addEventListener("click", gotoCreatorLinkedin)
-</script>
