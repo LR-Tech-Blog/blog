@@ -1,0 +1,40 @@
+---
+import LayoutPage from "../../../layouts/LayoutPage.astro"
+import { getAllPostTypes } from "../../../scripts/content_utils"
+import { getPostsByType } from "../../../scripts/content_fetcher"
+import { type CollectionEntry } from 'astro:content';
+import PostTypeTag from "../../../components/PostTypeTag.astro"
+import PostsList from "../../../components/PostsList.astro"
+
+export async function getStaticPaths() {
+    const postTypes = await getAllPostTypes();
+    const postByType = await Promise.all(postTypes.map(async pType => {
+        const posts = await getPostsByType(pType)
+        return {
+            params: { type: pType },
+            props: { posts }
+        }
+    }))
+
+    return postByType
+}
+
+interface Props {
+    posts: CollectionEntry<'posts'>[]
+}
+
+const { posts } = Astro.props
+const { type } = Astro.params
+---
+
+<LayoutPage title={"Post filter type"}>
+    <div class="flex flex-col gap-3">
+        <div class="flex flex-row gap-1 items-center">
+            <h3>
+                Filtrado por:
+            </h3>
+            <PostTypeTag text={type} />
+        </div>
+        <PostsList posts={posts} />
+    </div>
+</LayoutPage>
