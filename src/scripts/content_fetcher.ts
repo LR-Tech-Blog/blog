@@ -8,3 +8,8 @@ export async function getPosts(): Promise<CollectionEntry<'posts'>[]> {
 
     return posts
 }
+
+export async function getPostsByType(postType: string): Promise<CollectionEntry<'posts'>[]> {
+    const posts = await getPosts()
+    return posts.filter(post => post.data.postType === postType)
+}

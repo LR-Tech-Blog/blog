@@ -1,10 +1,11 @@
 ---
 import PostLayout from "../../layouts/PostLayout.astro";
-import { type CollectionEntry, getCollection, getEntry } from "astro:content"
+import { type CollectionEntry, getEntry } from "astro:content"
 import type { AuthorProfile, PostData } from "../../scripts/types/post_types";
+import { getPosts } from "../../scripts/content_fetcher";
 
 export async function getStaticPaths() {
-    const postCollection = await getCollection("posts");
+    const postCollection = await getPosts();
     return postCollection.map(post => {
         return {
             params: {
