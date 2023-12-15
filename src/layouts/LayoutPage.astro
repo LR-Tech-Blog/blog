@@ -2,11 +2,11 @@
 import LayoutBase from "./LayoutBase.astro";
 
 interface Props {
-    title: string | null
+    title?: string
 }
 
 const { title } = Astro.props
-const defaultTitle = "Luan Roger"
+const defaultTitle = "LR Tech Blog"
 ---
 
 <LayoutBase title={title ?? defaultTitle} bttEnable={false} >
