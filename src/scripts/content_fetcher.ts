@@ -13,3 +13,12 @@ export async function getPostsByType(postType: string): Promise<CollectionEntry<
     const posts = await getPosts()
     return posts.filter(post => post.data.postType === postType)
 }
+
+export async function getPostsWithTag(tag: string): Promise<CollectionEntry<'posts'>[]> {
+    if(tag.trim().length == 0) {
+        return []
+    }
+
+    const posts = await getPosts()
+    return posts.filter(post => post.data.tags.includes(tag))
+}

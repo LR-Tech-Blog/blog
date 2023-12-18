@@ -1,10 +1,9 @@
 ---
-import LayoutPage from "../../../layouts/LayoutPage.astro"
 import { getAllPostTypes } from "../../../scripts/content_utils"
 import { getPostsByType } from "../../../scripts/content_fetcher"
 import { type CollectionEntry } from 'astro:content';
-import PostTypeTag from "../../../components/PostTypeTag.astro"
-import PostsList from "../../../components/PostsList.astro"
+import PostTypeTag from "../../../components/PostTypeBadge.astro"
+import LayoutFilter from "../../../layouts/LayoutFilter.astro";
 
 export async function getStaticPaths() {
     const postTypes = await getAllPostTypes();
@@ -27,14 +26,6 @@ const { posts } = Astro.props
 const { type } = Astro.params
 ---
 
-<LayoutPage title={`Por tipo: ${type}`}>
-    <div class="flex flex-col gap-3">
-        <div class="flex flex-row gap-1 items-center">
-            <h3>
-                Filtrado por:
-            </h3>
-            <PostTypeTag text={type} />
-        </div>
-        <PostsList posts={posts} />
-    </div>
-</LayoutPage>
+<LayoutFilter by="tipo" value={type} posts={posts}>
+    <PostTypeTag text={type} />
+</LayoutFilter>

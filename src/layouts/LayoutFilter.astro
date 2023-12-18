@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from "astro:content";
+import LayoutPage from "./LayoutPage.astro";
+import PostsList from "../components/PostsList.astro";
+
+interface Props {
+    by: string
+    value: string
+    posts: CollectionEntry<'posts'>[]
+}
+
+const { by, value, posts } = Astro.props
+---
+
+<LayoutPage title={`Por ${by}: ${value}`}>
+    <div class="flex flex-col gap-3">
+        <div class="flex flex-row gap-1 items-center">
+            <h3>
+                Filtrado por:
+            </h3>
+            <slot/>
+        </div>
+        <PostsList posts={posts} />
+    </div>
+</LayoutPage>

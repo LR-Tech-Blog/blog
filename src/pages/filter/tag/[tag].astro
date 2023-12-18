@@ -1,0 +1,16 @@
+---
+import PostTagBadge from "../../../components/PostTagBadge.astro"
+import { getPostsWithTag } from "../../../scripts/content_fetcher"
+import LayoutFilter from "../../../layouts/LayoutFilter.astro";
+
+export const prerender = false
+
+const { tag } = Astro.params
+const tagClean: string = tag ?? ""
+
+const postWithTag = await getPostsWithTag(tagClean)
+---
+
+<LayoutFilter by="tag" value={tagClean} posts={postWithTag}>
+    <PostTagBadge tag={tagClean}/>
+</LayoutFilter>
