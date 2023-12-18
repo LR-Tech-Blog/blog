@@ -1,0 +1,16 @@
+---
+interface Props {
+    tag: string
+}
+
+const { tag } = Astro.props
+const isFormated = tag.startsWith("#", 0)
+const tagClean: string = !isFormated ? tag : tag.slice(1, tag.length - 1)
+---
+
+<a href=`/filter/tag/${tag}`>
+    <li transition:name={tag} class="badge badge-outline border-surface1 dark:border-dark_surface0
+    hover:scale-105">
+        #{tagClean}
+    </li>
+</a>
