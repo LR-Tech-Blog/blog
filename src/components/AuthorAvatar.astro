@@ -1,18 +1,42 @@
 ---
 import type { AuthorProfile } from "../scripts/types/post_types";
-import { AuthorProfileImageType } from "../scripts/types/post_types"
+import { AuthorProfileImageType } from "../scripts/types/post_types";
 import { getGravatarImageUrl } from "../scripts/utils";
-import { Image } from 'astro:assets';
+import undefinedImage from "../images/undefined.jpg";
+import { Image } from "astro:assets";
 
 interface Props {
-    adm: AuthorProfile
+  adm: AuthorProfile;
 }
 
-const imageSize = 200
+const imageSize = 200;
 
-const { adm } = Astro.props
+const { adm } = Astro.props;
 //TODO: Add default user image
-const imageUrl = adm.profileImageType === AuthorProfileImageType.Gravatar ? getGravatarImageUrl(adm.email, imageSize) : adm.profileImageUrl ?? ""
+const imageUrl =
+  adm.profileImageType === AuthorProfileImageType.Gravatar
+    ? getGravatarImageUrl(adm.email, imageSize)
+    : adm.profileImageUrl;
+const imageAlt = adm.profileImageAlt ?? adm.name;
+console.log(imageUrl);
 ---
-<Image class="rounded-xl object-cover" src={imageUrl} alt={adm.profileImageAlt} 
-width={imageSize} height={imageSize}>
+
+{
+  imageUrl === null ? (
+    <Image
+      class="rounded-xl object-cover"
+      src={undefinedImage}
+      alt={imageAlt}
+      width={imageSize}
+      height={imageSize}
+    />
+  ) : (
+    <Image
+      class="rounded-xl object-cover"
+      src={imageUrl}
+      alt={imageAlt}
+      width={imageSize}
+      height={imageSize}
+    />
+  )
+}
