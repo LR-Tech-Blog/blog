@@ -1,6 +1,7 @@
 export interface PostImage {
     src: string,
-    alt: string
+    alt: string,
+    href?: string | undefined,
 }
 export interface PostData {
     id: string,

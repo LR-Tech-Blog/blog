@@ -1,0 +1,11 @@
+---
+interface Props {
+    kbKey: string
+}
+
+const { kbKey } = Astro.props
+---
+
+<kbd class="kdb text-text dark:text-dark_text">
+    {kbKey}
+</kbd>

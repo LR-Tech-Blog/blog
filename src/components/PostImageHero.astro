@@ -1,0 +1,32 @@
+---
+import type { PostImage } from "../scripts/types/post_types";
+
+interface Props {
+  image: PostImage;
+}
+
+const { image } = Astro.props;
+const { src, alt, href } = image;
+---
+
+{
+  href === undefined ? (
+    <img
+      src={src}
+      alt={alt}
+      class="relative rounded-xl mb-5 
+      h-96 w-screen shadow-md object-cover"
+      transition:animate="slide"
+    />
+  ) : (
+    <a href={href} target="_blank">
+      <img
+        src={src}
+        alt={alt}
+        class="relative rounded-xl mb-5 
+      h-96 w-screen shadow-md object-cover"
+        transition:animate="slide"
+      />
+    </a>
+  )
+}
