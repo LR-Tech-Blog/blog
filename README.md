@@ -1,5 +1,5 @@
 <a href="https://lrtechblog.vercel.app">
-    <img src="https://github.com/LR-Tech-Blog/blog/blob/main/public/images/lr_logo.png" align="left" height="110"/>
+    <img src="https://github.com/LR-Tech-Blog/blog/blob/main/src/images/lr_logo.png" align="left" height="110"/>
     <h1>LR Tech Blog</h1>
 </a>
 
