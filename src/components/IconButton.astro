@@ -5,11 +5,12 @@ interface Props {
     name: string,
     width: string,
     height?: string
+    alt: string
 }
 
-const props = Astro.props
+const { name, width, height, alt } = Astro.props
 ---
 
-<button class="transition hover:scale-110 focus:ring-2">
-    <Icon name={props.name} width={props.width} height={props.height}/>
+<button class="transition hover:scale-110 focus:ring-2" aria-label={alt}>
+    <Icon name={name} width={width} height={height}/>
 </button>
