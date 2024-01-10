@@ -2,6 +2,8 @@
 import { type CollectionEntry, getEntry } from "astro:content";
 import type { AuthorProfile, PostData } from "../scripts/types/post_types";
 import PostTypeTag from "./PostTypeBadge.astro";
+import { renderPostContent } from "../scripts/content_render";
+import PostInfo from "./PostInfo.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -11,6 +13,9 @@ const { post } = Astro.props;
 const data: PostData = post.data;
 const authorEntry = await getEntry("authors", data.author.id);
 const author: AuthorProfile = authorEntry.data;
+const postContent = await renderPostContent(post)
+const { renderPostData } = postContent
+const { remarkPluginFrontmatter: remark } = renderPostData
 
 const formatedDate = data.date.toLocaleDateString("pt-br");
 ---
@@ -29,7 +34,7 @@ const formatedDate = data.date.toLocaleDateString("pt-br");
         <PostTypeTag text={data.postType} />
       </span>
     </span>
-    <small>{author.name} ● {formatedDate}</small>
+    <PostInfo author={author} date={formatedDate} minutesRead={remark.minutesRead} />
     <div>
       <p class="text-ellipsis overflow-hidden">
         {data.description}
