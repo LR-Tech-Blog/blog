@@ -1,0 +1,20 @@
+---
+import type { AuthorProfile } from '../scripts/types/post_types'
+import ReadTime from './ReadTime.astro'
+
+interface Props {
+    author: AuthorProfile
+    date: string
+    minutesRead: string
+}
+
+const { author, date, minutesRead } = Astro.props
+---
+
+<small class="flex flex-row items-center align-middle gap-1">
+    <span>by {author.name}</span>
+    <span>●</span>
+    <span>{date}</span>
+    <span>●</span>
+    <ReadTime readTime={minutesRead} />
+</small>

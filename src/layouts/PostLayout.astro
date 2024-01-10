@@ -6,16 +6,19 @@ import PostSideBarLeft from "../components/PostSideBarLeft.astro";
 import TagsViewer from "../components/TagsViewer.astro";
 import PostTypeTag from "../components/PostTypeBadge.astro";
 import PostImageHero from "../components/PostImageHero.astro";
-import { imageConfig } from "astro:assets";
+import PostInfo from "../components/PostInfo.astro";
+import type { RemarkFrontmatter } from "../scripts/types/render_post_data";
 
 interface Props {
   id: string;
   post: PostData;
+  remark: RemarkFrontmatter;
   author: AuthorProfile;
 }
 
-const { post, author } = Astro.props;
+const { post, remark, author } = Astro.props;
 const { id, title, date, tags, postType, description, image } = post;
+const { minutesRead } = remark;
 const formatedDate = date.toLocaleDateString("pt-br");
 ---
 
@@ -32,7 +35,7 @@ const formatedDate = date.toLocaleDateString("pt-br");
               <PostTypeTag text={postType} />
             </span>
           </div>
-          <small>by {author.name} ● {formatedDate}</small>
+          <PostInfo author={author} date={formatedDate} minutesRead={minutesRead} />
         </div>
         <TagsViewer tags={tags} />
       </header>

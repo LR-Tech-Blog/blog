@@ -2,7 +2,9 @@
 import PostLayout from "../../layouts/PostLayout.astro";
 import { type CollectionEntry, getEntry } from "astro:content"
 import type { AuthorProfile, PostData } from "../../scripts/types/post_types";
+import type { RenderablePostData, RenderPostData } from "../../scripts/types/render_post_data"
 import { getPosts } from "../../scripts/content_fetcher";
+import { renderPostContent } from "../../scripts/content_render";
 
 export async function getStaticPaths() {
     const postCollection = await getPosts();
@@ -22,11 +24,16 @@ interface Props {
 
 const { post } = Astro.props
 const data: PostData = post.data
+
 const authorEntry = await getEntry("authors", data.author.id)
 const author: AuthorProfile = authorEntry.data
-const { Content } = await post.render()
+const postContent = await renderPostContent(post)
+const { renderablePost, renderPostData } = postContent
+
+const { Content } = renderablePost
+const { remarkPluginFrontmatter: remark } = renderPostData
 ---
 
-<PostLayout id={post.id} post={data} author={author}>
+<PostLayout id={post.id} post={data} remark={remark} author={author}>
     <Content/>
 </PostLayout>

@@ -1,0 +1,17 @@
+---
+import Icon from 'astro-icon';
+
+interface Props {
+    readTime: string
+}
+
+const { readTime } = Astro.props
+
+---
+
+<div class="flex flex-row items-center">
+    <Icon name="time" width="16" height="16"/>
+    <p class="ml-1">
+        {readTime}
+    </p>
+</div>
