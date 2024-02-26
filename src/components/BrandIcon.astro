@@ -1,16 +1,15 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from "astro-icon/components";
 interface Props {
     brand: string
 }
 
 const { brand } = Astro.props
 ---
-<Icon pack="simple-icons" name={brand} class="fill-text dark:fill-dark_text"/>
+<Icon name={`simple-icons:${brand}`} size={25} class="fill-text dark:fill-dark_text"/>
 
 <style>
-    [astro-icon] {
-        max-height: 1.5em;
+    [data-icon] {
         display: inline-block;
         vertical-align: middle;
     }

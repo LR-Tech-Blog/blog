@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 interface Props {
     enable: boolean
@@ -13,7 +13,7 @@ const { enable } = Astro.props
     <button id="back-top" class="hidden" data-enable={enable}>
         <div id="button-div" class="fixed bottom-12 right-10 shadow-lg rounded-lg p-3 bg-base dark:bg-dark_base
         transition hover:scale-110 hover:shadow-xl">
-            <Icon name="up" width="30" height="30"/>
+            <Icon name="up" size={30}/>
         </div>
     </button>
 }

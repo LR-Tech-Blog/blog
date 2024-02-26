@@ -1,8 +1,8 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 ---
 
 <div role="alert" class="alert bg-lavender border-none">
-    <Icon name="info" width="30" height="30" color="#eff1f5"/>
+    <Icon name="info" size={30} color="#eff1f5"/>
     <slot/>
 </div>

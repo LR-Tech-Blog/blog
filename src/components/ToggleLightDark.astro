@@ -1,13 +1,13 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from "astro-icon/components";
 ---
 
 <button id="toggle-theme" class="swap swap-rotate" aria-label="Toggle light/dark mode">
     <span id="toggle-icon-sun" class="swap-on">
-        <Icon name="sun" width="30" height="30" />
+        <Icon name="sun" size={30} />
     </span>
     <span id="toggle-icon-moon" class="swap-off">
-        <Icon name="moon-stars" width="30" height="30" />
+        <Icon name="moon-stars" size={30} />
     </span>
 </button>
 

@@ -1,5 +1,5 @@
 ---
-import Icon from 'astro-icon';
+import { Icon } from "astro-icon/components";
 
 interface Props {
     readTime: string
@@ -10,7 +10,7 @@ const { readTime } = Astro.props
 ---
 
 <div class="flex flex-row items-center">
-    <Icon name="time" width="16" height="16"/>
+    <Icon name="time" size={16}/>
     <p class="ml-1">
         {readTime}
     </p>

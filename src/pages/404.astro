@@ -1,15 +1,14 @@
 ---
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import LayoutPage from "../layouts/LayoutPage.astro";
 import { getRandomEmoji } from "../scripts/emoji"
 
 const emoji = getRandomEmoji()
-console.log(`Emojo: ${emoji}`);
 ---
 
 <LayoutPage title="Você digitou erardo?">
     <div class="flex flex-col items-center justify-center sm:text-center h-52">
-        <Icon name="downasaur" height="40" width="40"/>
+        <Icon name="downasaur" size={40}/>
         <h2>
             Esta pagina não existe.
         </h2>

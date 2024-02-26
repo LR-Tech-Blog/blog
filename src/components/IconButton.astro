@@ -1,16 +1,15 @@
 ---
-import Icon from "astro-icon"
+import { Icon } from "astro-icon/components";
 
 interface Props {
     name: string,
-    width: string,
-    height?: string
+    size: number,
     alt: string
 }
 
-const { name, width, height, alt } = Astro.props
+const { name, size, alt } = Astro.props
 ---
 
 <button class="transition hover:scale-110 focus:ring-2" aria-label={alt}>
-    <Icon name={name} width={width} height={height}/>
+    <Icon name={name} size={size}/>
 </button>
