@@ -1,0 +1,45 @@
+---
+import IconButton from "./IconButton.astro";
+
+interface Props {
+  githubUrl?: string | undefined;
+  linkedinUrl?: string | undefined;
+}
+
+const { githubUrl, linkedinUrl } = Astro.props;
+---
+
+<div class="flex flex-row gap-3">
+  {
+    githubUrl && (
+      <social-button data-url={githubUrl}>
+        <IconButton name="github" size={30} alt="Goto creator's GitHub" />
+      </social-button>
+    )
+  }
+  {
+    linkedinUrl && (
+      <social-button data-url={linkedinUrl}>
+        <IconButton name="linkedin" size={30} alt="Goto creator's Linkedin" />
+      </social-button>
+    )
+  }
+</div>
+
+<script>
+  import { goto } from "../scripts/goto";
+
+  class SocialButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const socialUrl = this.dataset.url;
+
+      const button = this.querySelector("button");
+      if (typeof socialUrl === "string")
+        button?.addEventListener("click", () => goto(socialUrl));
+    }
+  }
+
+  customElements.define("social-button", SocialButton);
+</script>

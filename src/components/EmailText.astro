@@ -1,0 +1,13 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  email: string;
+}
+const { email } = Astro.props;
+---
+
+<div class="flex flex-row gap-2 items-center">
+  <Icon name="mail" size={20} />
+  <h3>{email}</h3>
+</div>
