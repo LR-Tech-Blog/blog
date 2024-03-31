@@ -1,0 +1,31 @@
+---
+import StackTechCard from "../components/StackTechCard.astro";
+import { Icon } from "astro-icon/components";
+import IconButton from "../components/IconButton.astro";
+import AuthorAvatar from "../components/AuthorAvatar.astro";
+import type { AuthorProfile } from "../scripts/types/post_types";
+import EmailText from "./EmailText.astro";
+import SocialList from "./SocialList.astro";
+import StackList from "./StackList.astro";
+
+interface Props {
+  adm: AuthorProfile;
+}
+const { adm } = Astro.props;
+
+const githubUrl = adm.github;
+const linkedinUrl = adm.linkedin;
+const stack = adm.stack;
+---
+
+<div
+  class="flex sm:gap-2 md:max-2xl:gap-5 sm:flex-col md:max-2xl:flex-row mb-3"
+>
+  <AuthorAvatar adm={adm} />
+  <div class="flex flex-col sm:gap-2">
+    <h1>{adm.name}</h1>
+    <EmailText email={adm.email} />
+    <SocialList githubUrl={githubUrl} linkedinUrl={linkedinUrl} />
+    <StackList stack={stack} />
+  </div>
+</div>

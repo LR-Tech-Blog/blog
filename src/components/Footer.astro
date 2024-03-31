@@ -4,7 +4,9 @@ import SponsorButton from "./SponsorButton.astro";
 ---
 
 <footer>
-  <div class="flex sm:flex-col sm:gap-3 md:max-2xl:flex-row w-100 justify-between items-center p-5 px-10">
+  <div
+    class="flex sm:flex-col sm:gap-3 md:max-2xl:flex-row w-100 justify-between items-center p-5 px-10"
+  >
     <aside>
       <small>
         <span>
@@ -21,13 +23,19 @@ import SponsorButton from "./SponsorButton.astro";
         href="https://github.com/LuanRoger/lr-tech-blog"
         class="tooltip tooltip-top flex items-center"
         data-tip="Fork me"
+        aria-label="Goto to Github"
       >
         <IconButton name="fork" size={17} alt="Goto to Github" />
       </a>
-      <a href="/rss.xml" class="tooltip tooltip-top flex items-center" data-tip="RSS">
+      <a
+        href="/rss.xml"
+        class="tooltip tooltip-top flex items-center"
+        data-tip="RSS"
+        aria-label="Check RSS page"
+      >
         <IconButton name="rss" size={17} alt="Check RSS page" />
       </a>
-      <SponsorButton/>
+      <SponsorButton />
     </aside>
   </div>
 

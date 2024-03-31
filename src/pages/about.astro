@@ -1,12 +1,10 @@
 ---
 import { getEntry } from "astro:content";
-import AuthorAvatar from "../components/AuthorAvatar.astro";
 import LayoutPage from "../layouts/LayoutPage.astro";
 import type { AuthorProfile } from "../scripts/types/post_types";
-import { Icon } from "astro-icon/components";
-import IconButton from "../components/IconButton.astro";
+
 import Prose from "../components/Prose.astro";
-import StackTechCard from "../components/StackTechCard.astro";
+import AuthorBasicInfo from "../components/AuthorBasicInfo.astro";
 
 const title = "Sobre";
 const admName = "rog";
@@ -14,71 +12,15 @@ const admName = "rog";
 const admAuthorProfile = await getEntry("authors", admName);
 const admDescription = await getEntry("authorsDescription", admName);
 const adm: AuthorProfile = admAuthorProfile.data;
-const { Content } = await admDescription.render();
 
-const githubUrl = adm.github;
-const linkedinUrl = adm.linkedin;
+const { Content } = await admDescription.render();
 ---
 
 <LayoutPage title={title}>
-  <div
-    class="flex sm:gap-2 md:max-2xl:gap-5 sm:flex-col md:max-2xl:flex-row mb-3"
-  >
-    <AuthorAvatar adm={adm} />
-    <div class="flex flex-col sm:gap-2">
-      <h1>{adm.name}</h1>
-      <div class="flex flex-row gap-2 items-center">
-        <Icon name="mail" size={20} />
-        <h3>{adm.email}</h3>
-      </div>
-      <div class="flex flex-row gap-3">
-        <social-button data-url={githubUrl}>
-          <IconButton name="github" size={30} alt="Goto creator's GitHub" />
-        </social-button>
-        <social-button data-url={linkedinUrl}>
-          <IconButton name="linkedin" size={30} alt="Goto creator's Linkedin" />
-        </social-button>
-      </div>
-      <div>
-        <!-- TODO: Separate in component -->
-        <small>STACK</small>
-        <ul class="flex flex-wrap gap-3">
-          {
-            adm.stack.map((s) => (
-              <li>
-                <StackTechCard
-                  name={s.name}
-                  iconName={s.iconName}
-                  iconColor={s.iconColor}
-                />
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
-  </div>
+  <AuthorBasicInfo adm={adm} />
   <article>
     <Prose>
       <Content />
     </Prose>
   </article>
 </LayoutPage>
-
-<script>
-  import { goto } from "../scripts/goto";
-
-  class SocialButton extends HTMLElement {
-    constructor() {
-      super();
-
-      const socialUrl = this.dataset.url;
-
-      const button = this.querySelector("button");
-      if (typeof socialUrl === "string")
-        button?.addEventListener("click", () => goto(socialUrl));
-    }
-  }
-
-  customElements.define("social-button", SocialButton);
-</script>
