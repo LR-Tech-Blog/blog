@@ -7,6 +7,8 @@ import "@fontsource/jetbrains-mono";
 import { ViewTransitions } from "astro:transitions";
 import BackToTopButton from "../components/BackToTopButton.astro";
 
+import '@/styles/global.css'
+
 interface Props {
   title: string;
   bttEnable: boolean;
@@ -67,33 +69,3 @@ const { title, bttEnable, metaDescription } = Astro.props;
     }
   })
 </script>
-
-<style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  @layer components {
-    h1 {
-      @apply font-bold text-3xl
-    }
-    h2 {
-      @apply font-bold text-xl
-    }
-    h3 {
-      @apply font-bold text-lg
-    }
-    .undeline-link {
-      @apply link
-    }
-  }
-
-  @layer containers {
-    body {
-      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text flex flex-col min-h-screen justify-between
-    }
-    footer {
-      @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text
-    }
-  }
-</style>
