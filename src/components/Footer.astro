@@ -13,7 +13,7 @@ import SponsorButton from "./SponsorButton.astro";
           © Luan Roger
           <a
             href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE"
-            class="undeline-link">MIT License</a
+            class="underline">MIT License</a
           > ● Made in Brazil 🇧🇷
         </span>
       </small>
@@ -21,19 +21,16 @@ import SponsorButton from "./SponsorButton.astro";
     <aside class="flex flex-row md:max-2xl:gap-2 sm:gap-5 items-center">
       <a
         href="https://github.com/LuanRoger/lr-tech-blog"
-        class="tooltip tooltip-top flex items-center"
-        data-tip="Fork me"
+        class="flex items-center"
         aria-label="Goto to Github"
       >
-        <IconButton name="fork" size={17} alt="Goto to Github" />
+        <IconButton name="fork" size={17} alt="Goto to Github" tooltipText="Fork me" />
       </a>
       <a
         href="/rss.xml"
-        class="tooltip tooltip-top flex items-center"
-        data-tip="RSS"
         aria-label="Check RSS page"
       >
-        <IconButton name="rss" size={17} alt="Check RSS page" />
+        <IconButton name="rss" size={17} alt="Check RSS page", tooltipText="RSS" />
       </a>
       <SponsorButton />
     </aside>

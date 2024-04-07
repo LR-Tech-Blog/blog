@@ -1,16 +1,18 @@
 ---
 import { Icon } from "astro-icon/components";
+import TooltipComplete from "./TooltipComplete";
 interface Props {
-    name: string
-    iconName: string
-    iconColor: string
+  name: string;
+  iconName: string;
+  iconColor: string;
 }
 
-const { name, iconName, iconColor } = Astro.props
+const { name, iconName, iconColor } = Astro.props;
 ---
 
-<div class="tooltip tooltip-bottom hover:tooltip-open
-shadow-lg bg-base dark:bg-dark_base rounded-sm
-p-3" data-tip={name}>
-    <Icon name={iconName} size={30} color={iconColor}/>
-</div>
+<TooltipComplete client:visible tooltipText={name}>
+  <div class="shadow-lg bg-card rounded-sm
+p-3 border">
+    <Icon name={iconName} size={30} color={iconColor} />
+  </div>
+</TooltipComplete>
