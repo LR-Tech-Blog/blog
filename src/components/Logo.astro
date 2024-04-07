@@ -1,12 +1,16 @@
 ---
 import { Image } from "astro:assets";
-import lrLogo from "../images/lr_logo.png"
+import lrLogo from "../images/lr_logo.png";
+import { Button } from "./ui/button";
 
-const logoAlt = "Logo LR Tech Blog"
+const logoAlt = "Logo LR Tech Blog";
 ---
 
-<div class="saturate-100 hue-rotate-30 btn btn-ghost h-auto">
-    <a href="/" class="transition hover:scale-105">
-        <Image src={lrLogo} alt={logoAlt} width={90} loading={"eager"} />
-    </a>
-</div>
+<Button
+  variant={"ghost"}
+  className="transition hover:scale-105 saturate-100 hue-rotate-30 btn h-auto"
+>
+  <a href="/">
+    <Image src={lrLogo} alt={logoAlt} width={90} loading={"eager"} />
+  </a>
+</Button>
