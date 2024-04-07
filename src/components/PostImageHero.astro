@@ -10,7 +10,7 @@ const { src, alt, href } = image;
 ---
 
 {
-  href === undefined ? (
+  !href ? (
     <img
       src={src}
       alt={alt}

@@ -24,14 +24,12 @@ const { src, srcDark, alt } = Astro.props
                 const currentTheme = getCurrentThemeMode();
                 const srcLight = this.dataset.src;
                 const srcDark = this.dataset.dark;
-                console.log("Dark: " + srcDark);
 
                 const image = this.querySelector("img")
                 if(currentTheme === "dark") {
                     image?.setAttribute("src", srcDark ?? "")
                 }
                 else {
-                    console.log("Light");
                     image?.setAttribute("src", srcLight ?? "")
                 }
             }
