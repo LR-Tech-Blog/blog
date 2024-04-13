@@ -1,5 +1,5 @@
 ---
-import LayoutBase from "./LayoutBase.astro";
+import LayoutPage from "./LayoutPage.astro";
 import Prose from "../components/Prose.astro";
 import type { AuthorProfile, PostData } from "../scripts/types/post_types";
 import PostSideBarLeft from "../components/PostShareSection.astro";
@@ -22,7 +22,7 @@ const { minutesRead } = remark;
 const formatedDate = date.toLocaleDateString("pt-br");
 ---
 
-<LayoutBase title={title} bttEnable metaDescription={description}>
+<LayoutPage title={title} bttEnabled={true} metaDescription={description}>
   <div class="flex flex-col gap-5 mb-5">
     <PostSideBarLeft />
     <header class="flex flex-col">
@@ -48,4 +48,4 @@ const formatedDate = date.toLocaleDateString("pt-br");
       <slot />
     </Prose>
   </article>
-</LayoutBase>
+</LayoutPage>

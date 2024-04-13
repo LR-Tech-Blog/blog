@@ -2,17 +2,20 @@
 import LayoutBase from "./LayoutBase.astro";
 
 interface Props {
-    title?: string
+  title?: string | undefined;
+  bttEnabled?: boolean | undefined;
+  metaDescription?: string | undefined;
 }
 
-const { title } = Astro.props
-const defaultTitle = "LR Tech Blog"
+const { title, bttEnabled, metaDescription } = Astro.props;
+const defaultTitle = "LR Tech Blog";
 ---
 
-<LayoutBase title={title ?? defaultTitle} bttEnable={false} >
-        <div class="mx-10">
-            <main>
-                <slot/>
-            </main>
-        </div>
+<LayoutBase
+  title={title ?? defaultTitle}
+  bttEnable={bttEnabled}
+  metaDescription={metaDescription}
+  className="px-10"
+>
+  <slot />
 </LayoutBase>
