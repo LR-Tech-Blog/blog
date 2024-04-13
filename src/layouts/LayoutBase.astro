@@ -75,24 +75,25 @@ const { title, bttEnable = false, metaDescription, className } = Astro.props;
       <BackToTopButton enable={bttEnable} />
     </div>
     <Footer />
-  </body><script>
-    import { getCurrentThemeMode } from "../scripts/theme";
+    <script>
+      import { getCurrentThemeMode } from "../scripts/theme";
 
-    document.addEventListener("astro:after-swap", () => {
-      const currentTheme = getCurrentThemeMode();
-      if (currentTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    });
-    document.addEventListener("astro:page-load", () => {
-      const currentTheme = getCurrentThemeMode();
-      if (currentTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    });
-  </script>
+      document.addEventListener("astro:after-swap", () => {
+        const currentTheme = getCurrentThemeMode();
+        if (currentTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      });
+      document.addEventListener("astro:page-load", () => {
+        const currentTheme = getCurrentThemeMode();
+        if (currentTheme === "dark") {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      });
+    </script>
+  </body>
 </html>

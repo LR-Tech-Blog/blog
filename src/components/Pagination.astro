@@ -1,0 +1,47 @@
+---
+import {
+  Pagination as PaginationShadcn,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "./ui/pagination";
+
+interface Props {
+  currentPage?: number | undefined;
+  basePath: string;
+  pageCount: number;
+}
+
+const { basePath, currentPage, pageCount } = Astro.props;
+---
+
+<PaginationShadcn>
+  <PaginationContent>
+    {
+      currentPage && currentPage > 1 && (
+        <PaginationItem>
+          <PaginationPrevious href={`${basePath}${currentPage - 1}`} />
+        </PaginationItem>
+      )
+    }
+    {
+      Array.from({ length: pageCount }).map((_, index) => {
+        const page = index + 1;
+        return (
+          <PaginationItem>
+            <PaginationLink href={`${basePath}${page}`} isActive={currentPage === page}>{page}</PaginationLink>
+          </PaginationItem>
+        );
+      })
+    }
+    {
+      currentPage && currentPage < pageCount && (
+        <PaginationItem>
+          <PaginationNext href={`${basePath}${currentPage + 1}`} />
+        </PaginationItem>
+      )
+    }
+  </PaginationContent>
+</PaginationShadcn>
