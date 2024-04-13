@@ -1,11 +1,8 @@
 ---
-import PostsList from "../components/PostsList.astro";
-import LayoutPage from "../layouts/LayoutPage.astro";
-import { getPosts } from "../scripts/content_fetcher"
-
-const posts = await getPosts()
+import LayoutPage from "@/layouts/LayoutPage.astro";
+import PostsListsPaginated from "@/components/PostsListsPaginated.astro";
 ---
 
 <LayoutPage>
-    <PostsList posts={posts} />
+  <PostsListsPaginated currentPage={1} />
 </LayoutPage>
