@@ -1,15 +1,26 @@
 ---
 import { Icon } from "astro-icon/components";
+import TooltipButton from "./TooltipButton";
+import { Button } from "./ui/button";
 
 interface Props {
-    name: string,
-    size: number,
-    alt: string
+  name: string;
+  size: number;
+  alt: string;
+  tooltipText?: string | undefined;
 }
 
-const { name, size, alt } = Astro.props
+const { name, size, alt, tooltipText } = Astro.props;
 ---
 
-<button class="transition hover:scale-110 focus:ring-2" aria-label={alt}>
-    <Icon name={name} size={size}/>
-</button>
+{
+  tooltipText ? (
+    <TooltipButton client:visible alt={alt} tooltipText={tooltipText}>
+      <Icon name={name} size={size} />
+    </TooltipButton>
+  ) : (
+    <Button variant={"ghost"} size={"icon"} aria-label={alt}>
+      <Icon name={name} size={size} />
+    </Button>
+  )
+}

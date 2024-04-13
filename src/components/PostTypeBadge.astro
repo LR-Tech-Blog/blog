@@ -1,4 +1,6 @@
 ---
+import { Badge } from './ui/badge'
+
 interface Props {
     text: string,
 }
@@ -7,8 +9,7 @@ const { text } = Astro.props
 ---
 
 <a href=`/filter/type/${text}`>
-    <span class="badge bg-mantle dark:bg-dark_mantle badge-accent border-surface1 dark:border-dark_surface0 
-    text-text dark:text-dark_text hover:scale-105">
+    <Badge className="text-sm">
         {text}
-    </span>
+    </Badge>
 </a>

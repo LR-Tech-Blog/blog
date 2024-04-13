@@ -7,13 +7,16 @@ import "@fontsource/jetbrains-mono";
 import { ViewTransitions } from "astro:transitions";
 import BackToTopButton from "../components/BackToTopButton.astro";
 
+import "@/styles/global.css";
+
 interface Props {
   title: string;
-  bttEnable: boolean;
-  metaDescription?: string;
+  bttEnable?: boolean | undefined;
+  metaDescription?: string | undefined;
+  className?: string | undefined;
 }
 
-const { title, bttEnable, metaDescription } = Astro.props;
+const { title, bttEnable = false, metaDescription, className } = Astro.props;
 ---
 
 <html lang="pt-BR">
@@ -22,78 +25,74 @@ const { title, bttEnable, metaDescription } = Astro.props;
     <link rel="icon" href="/favicon/favicon.ico" />
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon32.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome512.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicon/android-chrome192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/favicon/android-chrome512.png"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={metaDescription ?? 
-    "Blog de tecnologia com conteúdo técnico sobre programação e software."} />
+    <meta
+      name="description"
+      content={metaDescription ??
+        "Blog de tecnologia com conteúdo técnico sobre programação e software."}
+    />
     <title>{title}</title>
-    <ViewTransitions/>
+    <ViewTransitions />
   </head>
   <body>
     <div class="p-7">
       <TopBar />
       <NavBar />
-      <main>
+      <main class={className}>
         <slot />
-        <BackToTopButton enable={bttEnable}/>
       </main>
+      <BackToTopButton enable={bttEnable} />
     </div>
     <Footer />
-  </body>
+  </body><script>
+    import { getCurrentThemeMode } from "../scripts/theme";
+
+    document.addEventListener("astro:after-swap", () => {
+      const currentTheme = getCurrentThemeMode();
+      if (currentTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    });
+    document.addEventListener("astro:page-load", () => {
+      const currentTheme = getCurrentThemeMode();
+      if (currentTheme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    });
+  </script>
 </html>
-
-<script>
-  import { getCurrentThemeMode } from "../scripts/theme";
-
-  document.addEventListener("astro:after-swap", () => {
-    const currentTheme = getCurrentThemeMode();
-    if (currentTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  })
-  document.addEventListener("astro:page-load", () => {
-    const currentTheme = getCurrentThemeMode();
-    if (currentTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  })
-</script>
-
-<style is:global>
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-
-  @layer components {
-    h1 {
-      @apply font-bold text-3xl
-    }
-    h2 {
-      @apply font-bold text-xl
-    }
-    h3 {
-      @apply font-bold text-lg
-    }
-    .undeline-link {
-      @apply link
-    }
-  }
-
-  @layer containers {
-    body {
-      @apply bg-base dark:bg-dark_base text-text dark:text-dark_text font-text flex flex-col min-h-screen justify-between
-    }
-    footer {
-      @apply bg-mantle dark:bg-dark_mantle text-text dark:text-dark_text
-    }
-  }
-</style>

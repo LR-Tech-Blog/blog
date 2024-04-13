@@ -14,13 +14,11 @@ const { stack, listClass } = Astro.props;
   <ul class={listClass ?? "flex flex-wrap gap-3"}>
     {
       stack.map((s) => (
-        <li>
-          <StackTechCard
-            name={s.name}
-            iconName={s.iconName}
-            iconColor={s.iconColor}
-          />
-        </li>
+        <StackTechCard
+          name={s.name}
+          iconName={s.iconName}
+          iconColor={s.iconColor}
+        />
       ))
     }
   </ul>

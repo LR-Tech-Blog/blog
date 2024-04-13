@@ -1,19 +1,22 @@
 ---
 import PostCard from "./PostCard.astro";
 import type { CollectionEntry } from "astro:content";
+import { Separator } from "./ui/separator";
 
 export interface Props {
-    posts: CollectionEntry<'posts'>[]
+  posts: CollectionEntry<"posts">[];
 }
 
-const { posts } = Astro.props
-
+const { posts } = Astro.props;
 ---
 
-<ul role="list" class="divide-y-2 divide-surface0 dark:divide-dark_surface0">
-    {
-        posts.map(p => (
-            <PostCard post={p} />
-        ))
-    }
+<ul role="list">
+  {
+    posts.map((p) => (
+      <>
+        <PostCard post={p} />
+        <Separator />
+      </>
+    ))
+  }
 </ul>
