@@ -37,22 +37,10 @@ export async function getPostsFromPage(
   page: number
 ): Promise<CollectionEntry<"posts">[]> {
   const skip = (page - 1) * POSTS_PER_PAGE;
-  const firstPage = skip === 0
-  let postsSkiped = 0
-  let postsTaked = 0
+  let postsSkiped = 0;
+  let postsTaked = 0;
 
-  const pagePosts = await getPosts(({ data }) => {
-    if(data.draft || (!firstPage && postsSkiped <= skip)) {
-      postsSkiped++
-      return false
-    }
+  const pagePosts = await getPosts();
 
-    if(postsTaked < POSTS_PER_PAGE) {
-      return true
-    }
-
-    return false
-  });
-
-  return pagePosts.slice(0, POSTS_PER_PAGE);
+  return pagePosts.slice(skip, POSTS_PER_PAGE + skip);
 }
