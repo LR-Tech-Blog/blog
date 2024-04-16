@@ -1,0 +1,28 @@
+---
+import { getPageCount } from "@/scripts/content_utils";
+import Pagination from "./Pagination.astro";
+import PostsList from "./PostsList.astro";
+import { getPostsFromPage } from "@/scripts/content_fetcher";
+
+interface Props {
+  currentPage: number;
+}
+
+const { currentPage } = Astro.props;
+const basePath = "/posts/";
+const pageCount = await getPageCount();
+const pagePosts = await getPostsFromPage(currentPage);
+---
+
+<div class="flex flex-col justify-center gap-5">
+  <PostsList posts={pagePosts} />
+  {
+    pageCount !== 1 && (
+      <Pagination
+        pageCount={pageCount}
+        currentPage={currentPage}
+        basePath={basePath}
+      />
+    )
+  }
+</div>
