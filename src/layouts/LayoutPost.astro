@@ -2,7 +2,7 @@
 import LayoutPage from "./LayoutPage.astro";
 import Prose from "../components/Prose.astro";
 import type { AuthorProfile, PostData } from "../scripts/types/post_types";
-import PostSideBarLeft from "../components/PostShareSection.astro";
+import PostShareSection from "../components/PostShareSection.astro";
 import TagsViewer from "../components/TagsViewer.astro";
 import PostTypeTag from "../components/PostTypeBadge.astro";
 import PostImageHero from "../components/PostImageHero.astro";
@@ -24,7 +24,7 @@ const formatedDate = date.toLocaleDateString("pt-br");
 
 <LayoutPage title={title} bttEnabled={true} metaDescription={description}>
   <div class="flex flex-col gap-5 mb-5">
-    <PostSideBarLeft />
+    <PostShareSection />
     <header class="flex flex-col">
       <PostImageHero image={image} />
       <div class="flex flex-col mb-3">

@@ -1,23 +1,40 @@
 ---
 import IconButton from "./IconButton.astro";
+
+const shareIconSize: number = 30;
 ---
 
-<aside class="flex flex-row gap-6 items-center">
-    <span class="font-bold text-xs">SHARE</span>
-    <span id="copyLink">
-        <IconButton name="link" size={30} alt="Copy link" />
-    </span>
-    <span id="shareTwitter">
-        <IconButton name="twitter" size={30} alt="Share on Twitter (X)"/>
-    </span>
-    <!-- TODO: Add more social media share buttons -->
-    <!-- <button id="shareLinkedin" class="transition hover:scale-110">
-        <Icon name="linkedin" width="30" height="30"/>
-    </button> -->
+<aside class="flex flex-row gap-6 items-center justify-start sm:max-md:justify-center scale-100 sm:scale-75 md:max-2xl:scale-100">
+  <span class="font-bold sm:text-base md:max-2xl:text-xs">SHARE</span>
+  <span id="copyLink">
+    <IconButton name="link" size={shareIconSize} alt="Copy link" />
+  </span>
+  <span id="shareTwitter">
+    <IconButton
+      name="twitter"
+      size={shareIconSize}
+      alt="Share on Twitter (X)"
+    />
+  </span>
+  <span id="shareWhatsApp">
+    <IconButton name="zapzap" size={shareIconSize} alt="Share on WhatsApp" />
+  </span>
+  <span id="shareTelegram">
+    <IconButton name="telegram" size={shareIconSize} alt="Share on Telegram" />
+  </span>
+  <span id="shareReddit">
+    <IconButton name="reddit" size={shareIconSize} alt="Share on Reddit" />
+  </span>
 </aside>
 
 <script>
-  import { shareTwitter, shareLinkedin } from "../scripts/share";
+  import {
+    shareTwitter,
+    shareLinkedin,
+    shareWhatsApp,
+    shareTelegram,
+    shareReddit,
+  } from "../scripts/share";
 
   document.addEventListener("astro:page-load", () => {
     document.getElementById("copyLink")?.addEventListener("click", () => {
@@ -31,6 +48,18 @@ import IconButton from "./IconButton.astro";
     document.getElementById("shareLinkedin")?.addEventListener("click", () => {
       const link = encodeURI(window.location.href);
       shareLinkedin(link);
+    });
+    document.getElementById("shareWhatsApp")?.addEventListener("click", () => {
+      const link = encodeURI(window.location.href);
+      shareWhatsApp(link);
+    });
+    document.getElementById("shareTelegram")?.addEventListener("click", () => {
+      const link = encodeURI(window.location.href);
+      shareTelegram(link);
+    });
+    document.getElementById("shareReddit")?.addEventListener("click", () => {
+      const link = encodeURI(window.location.href);
+      shareReddit(link);
     });
   });
 </script>
