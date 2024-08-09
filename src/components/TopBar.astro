@@ -3,7 +3,16 @@ import Logo from "./Logo.astro";
 import ToggleLightDark from "./ToggleLightDark.astro";
 ---
 
-<header class="flex flex-row justify-between items-center mb-3">
-    <Logo/>
-    <ToggleLightDark/>
-</header>
+    <div class="flex items-center justify-between gap-20">
+        <Logo/>
+
+        <nav class="flex text-black font-bold gap-10">
+            <a href="/">Blog</a>
+            <a href="/about">Sobre</a>
+        </nav>
+        <div class="flex items-center border rounded-full p-2 ">
+            <ToggleLightDark/>
+        </div>
+        
+    </div>
+     
