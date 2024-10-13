@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import "@fontsource/poppins";
 import "@fontsource/jetbrains-mono";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import BackToTopButton from "../components/BackToTopButton.astro";
 
 import "@/styles/global.css";
@@ -63,7 +63,7 @@ const { title, bttEnable = false, metaDescription, className } = Astro.props;
         "Blog de tecnologia com conteúdo técnico sobre programação e software."}
     />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <div class="p-7">

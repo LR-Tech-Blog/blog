@@ -12,9 +12,9 @@ const { posts } = Astro.props;
 
 <ul role="list">
   {
-    posts.map((p) => (
+    posts.map((post) => (
       <>
-        <PostCard post={p} />
+        <PostCard post={post} />
         <Separator />
       </>
     ))
