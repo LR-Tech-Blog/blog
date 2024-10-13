@@ -5,6 +5,7 @@ import type { AuthorProfile } from "../scripts/types/post_types";
 
 import Prose from "../components/Prose.astro";
 import AuthorBasicInfo from "../components/AuthorBasicInfo.astro";
+import { render } from "astro:content";
 
 const title = "Sobre";
 const admName = "rog";
@@ -13,7 +14,7 @@ const admAuthorProfile = await getEntry("authors", admName);
 const admDescription = await getEntry("authorsDescription", admName);
 const adm: AuthorProfile = admAuthorProfile.data;
 
-const { Content } = await admDescription.render();
+const { Content } = await render(admDescription);
 ---
 
 <LayoutPage title={title}>
