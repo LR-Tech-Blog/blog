@@ -16,7 +16,7 @@ export default defineConfig({
     }
   }), react()],
   site: "https://lrtechblog.vercel.app",
-  output: "hybrid",
+  output: "static",
   adapter: vercel({
     webAnalytics: {
       enabled: true
