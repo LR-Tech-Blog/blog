@@ -1,7 +1,7 @@
 ---
 import LayoutPage from "./LayoutPage.astro";
 import Prose from "../components/Prose.astro";
-import type { AuthorProfile, PostData } from "../scripts/types/post_types";
+import type { PostData } from "../scripts/types/post_types";
 import PostShareSection from "../components/PostShareSection.astro";
 import TagsViewer from "../components/TagsViewer.astro";
 import PostTypeTag from "../components/PostTypeBadge.astro";
@@ -13,11 +13,10 @@ interface Props {
   id: string;
   post: PostData;
   remark: RemarkFrontmatter;
-  author: AuthorProfile;
 }
 
-const { post, remark, author } = Astro.props;
-const { id, title, date, tags, postType, description, image } = post;
+const { post, remark } = Astro.props;
+const { id, title, date, tags, postType, description, image, author } = post;
 const { minutesRead } = remark;
 const formatedDate = date.toLocaleDateString("pt-br");
 ---

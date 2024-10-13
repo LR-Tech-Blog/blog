@@ -10,14 +10,10 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { author: authorPostData } = post.data;
 const data: PostData = {
   id: post.id,
   ...post.data,
 };
-
-const authorEntry = await getEntry("authors", authorPostData.id);
-const author = authorEntry.data;
 
 const { remarkPluginFrontmatter } = await render(post);
 const remark: RemarkFrontmatter = {
@@ -26,7 +22,7 @@ const remark: RemarkFrontmatter = {
 
 const id = post.id
 const formatedDate = data.date.toLocaleDateString("pt-br");
-const { title, postType, description } = post.data;
+const { title, postType, description, author } = post.data;
 ---
 
 <div class="flex flex-col py-4">
