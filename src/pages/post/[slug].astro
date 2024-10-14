@@ -1,6 +1,6 @@
 ---
 import PostLayout from "../../layouts/LayoutPost.astro";
-import { type CollectionEntry, getEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 import { getPosts } from "../../scripts/content_fetcher";
 import { render } from "astro:content";
 import type { PostData } from "@/scripts/types/post_types";
@@ -23,21 +23,17 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { author: authorPostData } = post.data;
 const postData: PostData = {
-    id: post.id,
-    ...post.data,
-}
-
-const authorEntry = await getEntry("authors", authorPostData.id);
-const author = authorEntry.data;
+  id: post.id,
+  ...post.data,
+};
 
 const { Content, remarkPluginFrontmatter } = await render(post);
 const remark: RemarkFrontmatter = {
-    minutesRead: remarkPluginFrontmatter.minutesRead
-}
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+};
 ---
 
-<PostLayout id={post.id} post={postData} remark={remark} author={author}>
+<PostLayout id={post.id} post={postData} remark={remark}>
   <Content />
 </PostLayout>
