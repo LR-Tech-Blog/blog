@@ -4,7 +4,7 @@ import Footer from "../components/Footer.astro";
 import "@fontsource/poppins";
 import "@fontsource/jetbrains-mono";
 import { ClientRouter } from "astro:transitions";
-import SpeedInsights from '@vercel/speed-insights/astro';
+import SpeedInsights from "@vercel/speed-insights/astro";
 import BackToTopButton from "../components/BackToTopButton.astro";
 
 import "@/styles/global.css";
@@ -67,7 +67,7 @@ const { title, bttEnable = false, metaDescription, className } = Astro.props;
     <SpeedInsights />
   </head>
   <body>
-    <div class="p-7">
+    <div class="p-7 flex flex-col min-h-screen">
       <TopBar />
       <main class={className}>
         <slot />
