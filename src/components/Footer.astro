@@ -3,46 +3,46 @@ import IconButton from "./IconButton.astro";
 import SponsorButton from "./SponsorButton.astro";
 ---
 
-<footer>
-  <div
-    class="flex sm:flex-col sm:gap-3 md:max-2xl:flex-row w-100 justify-between items-center p-5 px-10"
-  >
-    <aside>
-      <small>
-        <span>
-          © Luan Roger
-          <a
-            href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE"
-            class="underline">MIT License</a
-          > ● Made in Brazil 🇧🇷
-        </span>
-      </small>
-    </aside>
-    <aside class="flex flex-row md:max-2xl:gap-2 sm:gap-5 items-center">
-      <a
-        href="https://github.com/LuanRoger/lr-tech-blog"
-        class="flex items-center"
-        aria-label="Goto to Github"
-      >
-        <IconButton name="fork" size={17} alt="Goto to Github" tooltipText="Fork me" />
-      </a>
-      <a
-        href="/rss.xml"
-        aria-label="Check RSS page"
-      >
-        <IconButton name="rss" size={17} alt="Check RSS page", tooltipText="RSS" />
-      </a>
-      <SponsorButton />
-    </aside>
-  </div>
-
-  <script>
-    import { gotoCreatorGithub, gotoCreatorLinkedin } from "../scripts/goto";
-
-    const githubButton = document.getElementById("creator-github");
-    const linkedinButton = document.getElementById("creator-linkedin");
-
-    githubButton?.addEventListener("click", gotoCreatorGithub);
-    linkedinButton?.addEventListener("click", gotoCreatorLinkedin);
-  </script>
+<footer
+  class="flex sm:flex-col sm:gap-3 md:max-2xl:flex-row w-100 justify-between items-center p-5 px-10"
+>
+  <aside>
+    <small>
+      <span>
+        © Luan Roger
+        <a
+          href="https://github.com/LuanRoger/lr-tech-blog/blob/main/LICENSE"
+          class="underline">MIT License</a
+        > ● Made in Brazil 🇧🇷
+      </span>
+    </small>
+  </aside>
+  <aside class="flex flex-row md:max-2xl:gap-2 sm:gap-5 items-center">
+    <a
+      href="https://github.com/LuanRoger/lr-tech-blog"
+      class="flex items-center"
+      aria-label="Github Logo"
+    >
+      <IconButton
+        name="fork"
+        size={17}
+        alt="Github Logo"
+        tooltipText="Fork me"
+      />
+    </a>
+    <a href="/rss.xml" aria-label="Check RSS page">
+      <IconButton name="rss" size={17} alt="Check RSS page" tooltipText="RSS" />
+    </a>
+    <SponsorButton />
+  </aside>
 </footer>
+
+<script>
+  import { gotoCreatorGithub, gotoCreatorLinkedin } from "../scripts/goto";
+
+  const githubButton = document.getElementById("creator-github");
+  const linkedinButton = document.getElementById("creator-linkedin");
+
+  githubButton?.addEventListener("click", gotoCreatorGithub);
+  linkedinButton?.addEventListener("click", gotoCreatorLinkedin);
+</script>

@@ -66,7 +66,7 @@ const { title, bttEnable = false, metaDescription, className } = Astro.props;
     <ClientRouter />
     <SpeedInsights />
   </head>
-  <body>
+  <body class="antialiased">
     <div class="p-7 flex flex-col min-h-screen">
       <TopBar />
       <main class={className}>
@@ -75,6 +75,7 @@ const { title, bttEnable = false, metaDescription, className } = Astro.props;
       <BackToTopButton enable={bttEnable} />
     </div>
     <Footer />
+
     <script>
       import { getCurrentThemeMode } from "../scripts/theme";
 
