@@ -1,9 +1,13 @@
 ---
+import Links from "./Links.astro";
 import Logo from "./Logo.astro";
 import ToggleLightDark from "./ToggleLightDark.astro";
 ---
 
-<header class="flex flex-row justify-between items-center mb-3">
-    <Logo/>
-    <ToggleLightDark/>
+<header class="flex flex-col gap-2">
+  <div class="flex flex-row justify-between items-center mb-3">
+    <Logo />
+    <ToggleLightDark />
+  </div>
+  <Links className="self-end" />
 </header>

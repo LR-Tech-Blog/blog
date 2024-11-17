@@ -20,7 +20,7 @@ export default defineConfig({
     }),
     react(),
   ],
-  site: "https://lrtechblog.vercel.app",
+  site: "https://blog.luanroger.dev",
   output: "static",
   adapter: vercel({
     webAnalytics: {
