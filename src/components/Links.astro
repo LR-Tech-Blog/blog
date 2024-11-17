@@ -1,0 +1,26 @@
+---
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  className?: string | undefined;
+}
+
+const { className } = Astro.props;
+---
+
+<a
+  href="https://portfolio.luanroger.dev"
+  target="_blank"
+  class={cn(
+    "inline-flex gap-1 items-center font-bold text-lg group hover:underline",
+    className
+  )}
+>
+  <Icon
+    name="external-link"
+    size={18}
+    class:list={"transition-opacity duration-300 opacity-0 group-hover:opacity-100"}
+  />
+  LR Portfolio
+</a>

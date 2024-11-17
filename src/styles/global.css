@@ -81,7 +81,7 @@
 
 @layer containers {
   body {
-    @apply bg-primary-foreground font-text flex flex-col min-h-screen justify-between;
+    @apply bg-primary-foreground font-text;
   }
   footer {
     @apply bg-destructive-foreground;

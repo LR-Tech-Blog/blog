@@ -1,42 +1,51 @@
 ---
-import { type CollectionEntry, getEntry } from "astro:content";
-import type { AuthorProfile, PostData } from "../scripts/types/post_types";
+import { type CollectionEntry, render } from "astro:content";
+import type { PostData } from "../scripts/types/post_types";
 import PostTypeTag from "./PostTypeBadge.astro";
-import { renderPostContent } from "../scripts/content_render";
 import PostInfo from "./PostInfo.astro";
+import type { RemarkFrontmatter } from "@/scripts/types/render_post_data";
 
 interface Props {
   post: CollectionEntry<"posts">;
 }
 
 const { post } = Astro.props;
-const data: PostData = post.data;
-const authorEntry = await getEntry("authors", data.author.id);
-const author: AuthorProfile = authorEntry.data;
-const postContent = await renderPostContent(post)
-const { renderPostData } = postContent
-const { remarkPluginFrontmatter: remark } = renderPostData
+const data: PostData = {
+  id: post.id,
+  ...post.data,
+};
 
+const { remarkPluginFrontmatter } = await render(post);
+const remark: RemarkFrontmatter = {
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+};
+
+const id = post.id
 const formatedDate = data.date.toLocaleDateString("pt-br");
+const { title, postType, description, author } = post.data;
 ---
 
 <div class="flex flex-col py-4">
   <span
     class="flex sm:flex-col md:max-2xl:flex-row md:max-2xl:items-center md:max-2xl:space-x-3"
   >
-    <a href={`/post/${post.slug}`}>
-      <h1 class="group-hover:underline" transition:name={data.id}>
-        {data.title}
+    <a href={`/post/${id}`}>
+      <h1 transition:name={id}>
+        {title}
       </h1>
     </a>
-    <span transition:name={data.id + data.postType}>
-      <PostTypeTag text={data.postType} />
+    <span transition:name={id + postType}>
+      <PostTypeTag text={postType} />
     </span>
   </span>
-  <PostInfo author={author} date={formatedDate} minutesRead={remark.minutesRead} />
+  <PostInfo
+    author={author}
+    date={formatedDate}
+    minutesRead={remark.minutesRead}
+  />
   <div>
     <p class="text-ellipsis overflow-hidden">
-      {data.description}
+      {description}
     </p>
   </div>
 </div>

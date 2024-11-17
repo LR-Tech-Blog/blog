@@ -1,38 +1,39 @@
 ---
 import PostLayout from "../../layouts/LayoutPost.astro";
-import { type CollectionEntry, getEntry } from "astro:content"
-import type { AuthorProfile, PostData } from "../../scripts/types/post_types";
+import { type CollectionEntry } from "astro:content";
 import { getPosts } from "../../scripts/content_fetcher";
-import { renderPostContent } from "../../scripts/content_render";
+import { render } from "astro:content";
+import type { PostData } from "@/scripts/types/post_types";
+import type { RemarkFrontmatter } from "@/scripts/types/render_post_data";
 
 export async function getStaticPaths() {
-    const postCollection = await getPosts();
-    return postCollection.map(post => {
-        return {
-            params: {
-                slug: post.slug
-            },
-            props: { post }
-        }
-    });
+  const postCollection = await getPosts();
+  return postCollection.map((post) => {
+    return {
+      params: {
+        slug: post.id,
+      },
+      props: { post },
+    };
+  });
 }
 
 interface Props {
-    post: CollectionEntry<'posts'>
+  post: CollectionEntry<"posts">;
 }
 
-const { post } = Astro.props
-const data: PostData = post.data
+const { post } = Astro.props;
+const postData: PostData = {
+  id: post.id,
+  ...post.data,
+};
 
-const authorEntry = await getEntry("authors", data.author.id)
-const author: AuthorProfile = authorEntry.data
-const postContent = await renderPostContent(post)
-const { renderablePost, renderPostData } = postContent
-
-const { Content } = renderablePost
-const { remarkPluginFrontmatter: remark } = renderPostData
+const { Content, remarkPluginFrontmatter } = await render(post);
+const remark: RemarkFrontmatter = {
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+};
 ---
 
-<PostLayout id={post.id} post={data} remark={remark} author={author}>
-    <Content/>
+<PostLayout id={post.id} post={postData} remark={remark}>
+  <Content />
 </PostLayout>
